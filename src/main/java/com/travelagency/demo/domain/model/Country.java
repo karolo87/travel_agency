@@ -16,7 +16,7 @@ public class Country {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
-    private String country;
+    private String name;
     @ManyToOne
     private Continent continent;
     @OneToMany(mappedBy = "country")

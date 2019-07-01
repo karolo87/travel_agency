@@ -6,19 +6,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lista kontynentów</title>
+    <title>Dodaj kraj</title>
 </head>
 <body>
 <%@include file="../fragments/header.jspf" %>
 
-<h2>LISTA</h2>
+<form:form action="/admin/add-country/${continentId}" modelAttribute="newCountry" method="post">
 
-<c:forEach items="${continentList}" var="continent">
-    ${continent.name}
-    <a href="/country/list/${continent.id}">Lista krajów</a>
-    <a href="/admin/add-country/${continent.id}">Dodaj kraj</a>
-    <br/>
-</c:forEach>
+    Nazwa kraju: <form:input path="name"/>
+    <input type="submit" value="Dodaj"/>
+</form:form>
 
 </body>
 </html>

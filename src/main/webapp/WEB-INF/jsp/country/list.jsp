@@ -6,18 +6,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lista kontynentów</title>
+    <title>Lista krajów</title>
 </head>
 <body>
 <%@include file="../fragments/header.jspf" %>
 
-<h2>LISTA</h2>
+<h2>Lista krajów</h2>
 
-<c:forEach items="${continentList}" var="continent">
-    ${continent.name}
-    <a href="/country/list/${continent.id}">Lista krajów</a>
-    <a href="/admin/add-country/${continent.id}">Dodaj kraj</a>
-    <br/>
+<c:forEach items="${countries_of_continent}" var="country">
+    ${country.id} |
+    ${country.name}
 </c:forEach>
 
 </body>

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ContinentService {
@@ -19,6 +20,10 @@ public class ContinentService {
 
     public Continent addNewContinent(Continent continent){
         return continentRepository.save(continent);
+    }
+
+    public Optional<Continent> getContinentById(Long id) {
+        return continentRepository.findById(id);
     }
 
     public List<Continent> getAllContinents(){
