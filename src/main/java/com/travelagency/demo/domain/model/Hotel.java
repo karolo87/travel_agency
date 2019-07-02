@@ -15,7 +15,7 @@ public class Hotel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
-    private String hotel;
+    private String name;
     private String standard;
     private String description;
     @ManyToOne

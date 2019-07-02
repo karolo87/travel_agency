@@ -16,7 +16,7 @@ public class City {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
-    private String city;
+    private String name;
     @ManyToOne
     private Country country;
     @OneToMany(mappedBy = "city")

@@ -32,8 +32,8 @@ public class ContinentController {
     }
 
     @GetMapping("/continent/list")
-    public String getAllContinents(Model model) {
-        model.addAttribute("continentList", continentService.getAllContinents());
+    public String getAllContinentsSortedByName(Model model) {
+        model.addAttribute("continentList", continentService.getAllContinentsSortedByName());
         return "continent/list";
     }
 }

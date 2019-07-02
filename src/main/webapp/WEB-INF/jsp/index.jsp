@@ -6,18 +6,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Owners list</title>
+    <title>Lista krajów</title>
 </head>
 <body>
-<h1>TRAVEL AGENCY</h1>
+<%@include file="./fragments/header.jspf" %>
 
-<menu>
-    <a href="/">Strona główna</a> |
-    <a href="/admin/add-continent">Dodaj kontynent</a> |
-    <a href="/continent/list">Kontynenty</a> |
-    <a href="/country/all-countries">Państwa</a> |
-    <a href="/city/all-cities">Miasta</a> |
-</menu>
+<h2>Strona główna</h2>
+
+
+
 
 
 </body>

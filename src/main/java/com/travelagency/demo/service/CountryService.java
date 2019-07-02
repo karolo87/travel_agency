@@ -34,4 +34,8 @@ public class CountryService {
     public List<Country> getAllCountrierOfGivenContinent(Long id) {
         return countryRepository.findAllByContinent_Id(id);
     }
+
+    public Optional<Country> getCountryById(Long id) {
+        return countryRepository.findById(id);
+    }
 }

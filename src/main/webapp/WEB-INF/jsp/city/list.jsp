@@ -11,22 +11,18 @@
 <body>
 <%@include file="../fragments/header.jspf" %>
 
-<h2>Lista krajów</h2>
+<h2>Lista miast</h2>
 
 <c:choose>
-
-    <c:when test="${empty countries_of_continent}">
-        <a href="/admin/add-country/${continentId}">Dodaj kraj</a>
+    <c:when test="${empty cityList}">
+        Lista miast pusta.
+        <a href="/admin/add-city/${countryId}">Dodaj miasto.</a>
     </c:when>
-
     <c:otherwise>
-
-        <c:forEach items="${countries_of_continent}" var="country">
-            ${country.id} |
-            ${country.name}
-            <a href="/city/list/${country.id}">Lista miast</a>
-            <a href="/admin/add-city/${country.id}">Dodaj miasto</a>
-            <br/>
+        <c:forEach items="${cityList}" var="city">
+            ${city.name}
+            <a href="/hotel/list/${city.id}">Lista hoteli</a>
+            <a href="/admin/add-hotel/${city.id}">Dodaj hotel</a>
         </c:forEach>
 
     </c:otherwise>

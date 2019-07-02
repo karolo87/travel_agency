@@ -46,7 +46,12 @@ public class CountryController {
         List<Country> foundCountries = countryService.getAllCountrierOfGivenContinent(id);
         model.addAttribute("countries_of_continent", foundCountries);
         return "country/list";
+    }
 
+    @GetMapping("/country/all-countries")
+    public String getAllCountries(Model model) {
+        model.addAttribute("allCountries", countryService.getAllCountries());
+        return "country/all-countries";
     }
 }
 

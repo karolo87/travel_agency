@@ -5,6 +5,7 @@ import com.travelagency.demo.domain.repository.ContinentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,7 +27,9 @@ public class ContinentService {
         return continentRepository.findById(id);
     }
 
-    public List<Continent> getAllContinents(){
-        return continentRepository.findAll();
+    public List<Continent> getAllContinentsSortedByName(){
+        List<Continent> continents = continentRepository.findAll();
+        continents.sort(Comparator.comparing(Continent::getName));
+        return continents;
     }
 }
