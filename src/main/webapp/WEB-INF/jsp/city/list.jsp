@@ -23,6 +23,7 @@
             ${city.name}
             <a href="/hotel/list/${city.id}">Lista hoteli</a>
             <a href="/admin/add-hotel/${city.id}">Dodaj hotel</a>
+            <a href="/admin/add-airport/${city.id}">Dodaj lotnisko</a>
         </c:forEach>
 
     </c:otherwise>
