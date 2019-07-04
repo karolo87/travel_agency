@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lista krajów</title>
+    <title>Super hiper biuro podróży!!</title>
 </head>
 <body>
 <%@include file="./fragments/header.jspf" %>

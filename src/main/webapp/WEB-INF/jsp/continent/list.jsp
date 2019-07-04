@@ -13,6 +13,8 @@
 
 <h2>LISTA</h2>
 
+<a href="/admin/add-continent">Dodaj kontynent</a><br/><br/>
+
 <c:forEach items="${continentList}" var="continent">
     ${continent.name}
     <a href="/country/list/${continent.id}">Lista krajów</a>

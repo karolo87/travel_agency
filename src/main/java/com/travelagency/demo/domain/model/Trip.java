@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Data
 @Entity
@@ -23,6 +24,7 @@ public class Trip {
     private City arrivalCity;
     @ManyToOne
     private Airport arrivalAirport;
+    //hotel
     private String startDate;
     private String endDate;
     private Integer daysQuantity;
