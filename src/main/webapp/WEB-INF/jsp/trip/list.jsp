@@ -18,6 +18,10 @@
     Miasto przylotu: ${trip.arrivalCity.name} |
     Lotnisko wylotu: ${trip.departureAirport.name} |
     Lotnisko przylotu: ${trip.arrivalAirport.name} |
+<<<<<<< HEAD
+=======
+    Hotel: ${trip.hotel.name} |
+>>>>>>> workspace
     Początek wycieczki: ${trip.startDate} |
     Koniec wycieczki: ${trip.endDate} |
     Ilość dni: ${trip.daysQuantity} |

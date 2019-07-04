@@ -18,8 +18,14 @@ INSERT INTO city VALUES ('3', 'Warszawa', '1');
 
 INSERT INTO city VALUES ('4', 'Ateny', '2');
 
+<<<<<<< HEAD
 INSERT INTO hotel VALUES ('1', 'Antracyt', '5', 'Piękny hotel z widokiem na morze.', '1');
 INSERT INTO hotel VALUES ('2', 'Sheraton', 'Idealny hotel na wyjazd służbowy', '5', '3');
+=======
+INSERT INTO hotel VALUES ('1', 'Piękny hotel z widokiem na morze.', 'Antracyt', '5', '1');
+INSERT INTO hotel VALUES ('2', 'Idealny hotel na wyjazd służbowy', 'Sheraton', '5', '3');
+INSERT INTO hotel VALUES ('3', 'Pięknie położony hotel, z dostępem do plaży.', 'Zeus', '3', '4');
+>>>>>>> workspace
 
 INSERT  INTO airport VALUES ('1', 'Lotnisko Chopina', '3');
 INSERT  INTO airport VALUES ('2', 'Port lotniczy Ateny', '4');

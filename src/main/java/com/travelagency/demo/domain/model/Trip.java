@@ -24,9 +24,16 @@ public class Trip {
     private City arrivalCity;
     @ManyToOne
     private Airport arrivalAirport;
+<<<<<<< HEAD
     //hotel
     private String startDate;
     private String endDate;
+=======
+    @OneToOne
+    private Hotel hotel;
+    private LocalDate startDate;
+    private LocalDate endDate;
+>>>>>>> workspace
     private Integer daysQuantity;
     private String type;    //BB, HB, FB, AI
     private double adultPrice;

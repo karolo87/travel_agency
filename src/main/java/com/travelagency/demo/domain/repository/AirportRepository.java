@@ -8,4 +8,5 @@ import java.util.List;
 public interface AirportRepository extends JpaRepository<Airport, Long> {
 
     List<Airport> findAllByCity_Id(Long cityId);
+    Airport findByNameContaining(String name);
 }

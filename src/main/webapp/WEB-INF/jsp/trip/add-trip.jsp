@@ -26,10 +26,20 @@
     Lotnisko przylotu:
     <form:input path="arrivalAirport"/><br/>
 
+<<<<<<< HEAD
     Początek wycieczki:
     <form:input path="startDate"/><br/>
 
     Koniec wycieczki:
+=======
+    Hotel:
+    <form:input path="hotel"/><br/>
+
+    Początek wycieczki (rrrr-MM-dd):
+    <form:input path="startDate"/><br/>
+
+    Koniec wycieczki (rrrr-MM-dd):
+>>>>>>> workspace
     <form:input path="endDate"/><br/>
 
     Ilość dni:
