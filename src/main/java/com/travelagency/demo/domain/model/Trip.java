@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Data
 @Entity
@@ -23,8 +24,10 @@ public class Trip {
     private City arrivalCity;
     @ManyToOne
     private Airport arrivalAirport;
-    private String startDate;
-    private String endDate;
+    @OneToOne
+    private Hotel hotel;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private Integer daysQuantity;
     private String type;    //BB, HB, FB, AI
     private double adultPrice;

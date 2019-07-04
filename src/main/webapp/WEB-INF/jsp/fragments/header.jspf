@@ -13,10 +13,10 @@
 
 <menu>
     <a href="/">Strona główna</a> |
-    <a href="/admin/add-continent">Dodaj kontynent</a> |
     <a href="/continent/list">Kontynenty</a> |
     <a href="/country/all-countries">Państwa</a> |
-    <a href="/city/all-cities">Miasta</a> |
+    <a href="/city/all-cities">Miasta</a> ||
+    <a href="/admin/add-trip">Dodaj wycieczkę</a>
 </menu>
 
 

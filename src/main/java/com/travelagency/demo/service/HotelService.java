@@ -30,4 +30,8 @@ public class HotelService {
     public List<Hotel> findHotelsByCityId(Long cityId) {
         return hotelRepository.findAllByCity_Id(cityId);
     }
+
+    public Hotel findByName(String name){
+        return hotelRepository.findByNameContaining(name);
+    }
 }

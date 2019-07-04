@@ -12,7 +12,7 @@
 <%@include file="../fragments/header.jspf" %>
 
 <c:forEach items="${hotelsList}" var="hotel">
-    ${hotel.name} | 
+    ${hotel.name} |
     ${hotel.standard} |
     ${hotel.description}
 </c:forEach>
