@@ -3,10 +3,7 @@ package com.travelagency.demo.service;
 import com.travelagency.demo.domain.model.Country;
 import com.travelagency.demo.domain.model.Trip;
 import com.travelagency.demo.domain.repository.TripRepository;
-<<<<<<< HEAD
-=======
-import com.travelagency.demo.dto.TripDto;
->>>>>>> workspace
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,8 +34,5 @@ public class TripService {
     public List<Trip> getAllTripsToGivenCountry(Long countryId) {
         return tripRepository.findAllByArrivalCity_Country_Id(countryId);
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> workspace
 }
