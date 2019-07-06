@@ -1,8 +1,5 @@
 package com.travelagency.demo.dto;
 
-import com.travelagency.demo.domain.model.Airport;
-import com.travelagency.demo.domain.model.City;
-
 import lombok.Data;
 
 @Data

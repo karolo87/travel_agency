@@ -39,8 +39,8 @@ public class TripController {
 
     @GetMapping("/admin/add-trip")
     public String addNewTrip(Model model) {
-        model.addAttribute("newTrip", new Trip());
         model.addAttribute("newTrip", new TripDto());
+        model.addAttribute("cities", cityService.getAllCities());
         return "trip/add-trip";
     }
 

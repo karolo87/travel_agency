@@ -1,6 +1,5 @@
 package com.travelagency.demo.service;
 
-import com.travelagency.demo.domain.model.Country;
 import com.travelagency.demo.domain.model.Trip;
 import com.travelagency.demo.domain.repository.TripRepository;
 
@@ -33,6 +32,10 @@ public class TripService {
 
     public List<Trip> getAllTripsToGivenCountry(Long countryId) {
         return tripRepository.findAllByArrivalCity_Country_Id(countryId);
+    }
+
+    public Optional<Trip> getTripById(Long id) {
+        return tripRepository.findById(id);
     }
 
 }

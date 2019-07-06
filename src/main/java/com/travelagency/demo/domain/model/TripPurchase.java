@@ -17,7 +17,8 @@ public class TripPurchase {
     private Long id;
     @OneToOne
     private Trip trip;
-    @ManyToOne
-    private ClientsData clientsData;
-    private Double amount;
+    @OneToOne(mappedBy = "tripPurchase")
+    private ClientsData client;
+    private Integer adultsQuantity;
+    private Integer childrenQuantity;
 }

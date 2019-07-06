@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @Entity
@@ -18,7 +17,6 @@ public class ClientsData {
     private Long id;
     private String firstName;
     private String lastName;
-    private boolean isAdult;
-    @OneToMany(mappedBy = "clientsData")
-    private List<TripPurchase> purchaseList;
+    @OneToOne
+    private TripPurchase tripPurchase;
 }

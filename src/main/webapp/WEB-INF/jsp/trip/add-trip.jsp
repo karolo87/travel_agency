@@ -11,49 +11,84 @@
 <body>
 <%@include file="../fragments/header.jspf" %>
 
-<h2>Dodaj hotel</h2>
+<h2>Dodaj wycieczkę</h2>
 
-<form:form action="/admin/add-trip/${cityId}" modelAttribute="newTrip" method="post">
-    Miasto wylotu:
-    <form:input path="departureCity"/><br/>
+<form:form action="/admin/add-trip" modelAttribute="newTrip" method="post">
 
-    Lotnisko wylotu:
-    <form:input path="departureAirport"/><br/>
 
-    Miasto przylotu:
-    <form:input path="arrivalCity"/><br/>
+    <table>
+        <tr>
+            <th>Miasto wylotu:</th>
+            <th>
+                <form:select path="departureCity">
+                    <c:forEach items="${cities}" var="city">
+                        <form:option value="${city.name}"/>
+                    </c:forEach>
+                </form:select>
+            </th>
+        </tr>
+        <tr>
+            <th>Lotnisko wylotu:</th>
+            <th><form:input path="departureAirport"/></th>
+        </tr>
+        <tr>
+            <th>Miasto przylotu:</th>
+            <th>
+                <form:select path="arrivalCity">
+                    <c:forEach items="${cities}" var="city">
+                        <form:option value="${city.name}"/>
+                    </c:forEach>
+                </form:select>
+            </th>
+        </tr>
+        <tr>
+            <th>Lotnisko przylotu:</th>
+            <th><form:input path="arrivalAirport"/></th>
+        </tr>
+        <tr>
+            <th>Hotel:</th>
+            <th><form:input path="hotel"/></th>
+        </tr>
+        <tr>
+            <th>Początek wycieczki (rrrr-MM-dd):</th>
+            <th><form:input path="startDate"/></th>
+        </tr>
+        <tr>
+            <th>Koniec wycieczki (rrrr-MM-dd):</th>
+            <th><form:input path="endDate"/></th>
+        </tr>
+        <tr>
+            <th>Ilość dni:</th>
+            <th><form:input path="daysQuantity"/></th>
+        </tr>
+        <tr>
+            <th>Wariant wyżywienia:</th>
+            <th><form:input path="type"/></th>
+        </tr>
+        <tr>
+            <th>Cena za osobę dorosłą:</th>
+            <th><form:input path="adultPrice"/></th>
+        </tr>
+        <tr>
+            <th>Cena za dziecko:</th>
+            <th><form:input path="childPrice"/></th>
+        </tr>
+        <tr>
+            <th>Ilość miejsc dla dorosłych:</th>
+            <th><form:input path="adultsQuantity"/></th>
+        </tr>
+        <tr>
+            <th>Ilość miejsc dla dzieci:</th>
+            <th><form:input path="childrenQuantity"/></th>
+        </tr>
+        <tr>
+            <th></th>
+            <th><input type="submit" value="Dodaj"/></th>
+        </tr>
+    </table>
 
-    Lotnisko przylotu:
-    <form:input path="arrivalAirport"/><br/>
 
-    Hotel:
-    <form:input path="hotel"/><br/>
 
-    Początek wycieczki (rrrr-MM-dd):
-    <form:input path="startDate"/><br/>
-
-    Koniec wycieczki (rrrr-MM-dd):
-    <form:input path="endDate"/><br/>
-
-    Ilość dni:
-    <form:input path="daysQuantity"/><br/>
-
-    Wariant wyżywienia:
-    <form:input path="type"/><br/>
-
-    Cena za osobę dorosłą:
-    <form:input path="adultPrice"/><br/>
-
-    Cena za dziecko:
-    <form:input path="childPrice"/><br/>
-
-    Ilość miejsc dla dorosłych:
-    <form:input path="adultsQuantity"/><br/>
-
-    Ilość miejsc dla dzieci:
-    <form:input path="childrenQuantity"/><br/>
-
-    <input type="submit" value="Dodaj"/>
 </form:form>
 
 
