@@ -2,6 +2,7 @@ package com.travelagency.demo.controller;
 
 import com.travelagency.demo.domain.model.Trip;
 import com.travelagency.demo.domain.model.TripPurchase;
+import com.travelagency.demo.dto.SearchTrip;
 import com.travelagency.demo.service.CityService;
 import com.travelagency.demo.dto.TripDto;
 import com.travelagency.demo.service.AirportService;
@@ -10,10 +11,7 @@ import com.travelagency.demo.service.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -71,12 +69,6 @@ public class TripController {
         return "redirect:/trip/details/{tripId}";
     }
 
-    @GetMapping("/trip/list")
-    public String getAllTrips(Model model) {
-        model.addAttribute("tripsList", tripService.getAllTrips());
-        return "trip/list";
-    }
-
     @GetMapping("/trip/details/{tripId}")
     public String showDetailsOfGivenTrip(@PathVariable("tripId") Long tripId,
                                          Model model) {
@@ -85,5 +77,28 @@ public class TripController {
         return "trip/details";
     }
 
+    @GetMapping("/search")
+    public String searchATrip(Model model) {
+        model.addAttribute("searchedTrip", new SearchTrip());
+        return "trip/search";
+    }
+
+    @PostMapping("/search")
+    public String searchATrip(@ModelAttribute("searchedTrip") SearchTrip searchTrip,
+                              Model model) {
+
+        String param = searchTrip.getParam();
+        String value = searchTrip.getValue();
+        model.addAttribute("foundTrips", tripService.findATrip(param, value));
+
+        return "trip/search-result";
+    }
+
+
+    @GetMapping("/trip/list")
+    public String getAllTrips(Model model) {
+        model.addAttribute("tripsList", tripService.getAllTrips());
+        return "trip/list";
+    }
 
 }

@@ -85,8 +85,8 @@
             <th>Wycieczka promowana?</th>
             <th>
                 <form:select path="isPromoted">
-                    <form:option value="Tak">Tak</form:option>
-                    <form:option value="Nie">Nie</form:option>
+                    <form:option value="Tak" label="joo"/>
+                    <form:option value="Nie"/>
                 </form:select>
 
             </th>

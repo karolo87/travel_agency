@@ -3,6 +3,7 @@ package com.travelagency.demo.service;
 import com.travelagency.demo.domain.model.Trip;
 import com.travelagency.demo.domain.repository.TripRepository;
 
+import com.travelagency.demo.dto.SearchTrip;
 import com.travelagency.demo.dto.TripDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -99,6 +100,39 @@ public class TripService {
         tripDto.setAdultsQuantity(trip.getAdultsQuantity());
         tripDto.setChildrenQuantity(trip.getChildrenQuantity());
         return tripDto;
+    }
+
+    public List<Trip> findATrip(String parameter, String value) {
+        if (parameter.equals("departureCity")) {
+            return tripRepository.findAllByDepartureCity_NameContaining(value);
+        } else if (parameter.equals("departureAirport")) {
+            return tripRepository.findAllByDepartureAirport_NameContaining(value);
+        } else if (parameter.equals("arrivalCity")) {
+            return tripRepository.findAllByArrivalCity_NameContaining(value);
+        } else if (parameter.equals("arrivalAirport")) {
+            return tripRepository.findAllByArrivalAirport_NameContaining(value);
+        } else if (parameter.equals("hotel")) {
+            return tripRepository.findAllByHotel_NameContaining(value);
+        } else if (parameter.equals("startDate")) {
+            return tripRepository.findAllByStartDateContaining(LocalDate.parse(value,  DateTimeFormatter.ofPattern("yyyy-MM-d")));
+        } else if (parameter.equals("endDate")) {
+            return tripRepository.findAllByEndDateContaining(LocalDate.parse(value,  DateTimeFormatter.ofPattern("yyyy-MM-d")));
+        } else if (parameter.equals("daysQuantity")) {
+            return tripRepository.findAllByDaysQuantityEquals(Integer.valueOf(value));
+        } else if (parameter.equals("type")) {
+            return tripRepository.findAllByTypeEquals(value);
+        } else if (parameter.equals("adultPrice")) {
+            return tripRepository.findAllByAdultPriceIsLessThanEqual(Double.valueOf(value));
+        } else if (parameter.equals("childPrice")) {
+            return tripRepository.findAllByChildPriceIsLessThanEqual(Double.valueOf(value));
+        } else if (parameter.equals("isPromoted")) {
+            return tripRepository.findAllByIsPromotedContaining(value);
+        } else if (parameter.equals("adultsQuantity")) {
+            return tripRepository.findAllByAdultsQuantityGreaterThanEqual(Integer.valueOf(value));
+        } else if (parameter.equals("childrenQuantity")) {
+            return tripRepository.findAllByChildrenQuantityGreaterThanEqual(Integer.valueOf(value));
+        } else
+            return null;
     }
 
 }
