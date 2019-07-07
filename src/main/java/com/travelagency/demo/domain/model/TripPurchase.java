@@ -15,9 +15,9 @@ public class TripPurchase {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
-    @OneToOne
+    @ManyToOne
     private Trip trip;
-    @OneToOne(mappedBy = "tripPurchase")
+    @OneToOne
     private ClientsData client;
     private Integer adultsQuantity;
     private Integer childrenQuantity;

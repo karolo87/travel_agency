@@ -41,13 +41,13 @@ public class TripPurchaseController {
                                Model model){
         TripPurchase purchase = tripPurchaseService.createPurchaseFromDto(tripId, tripPurchaseDto);
         model.addAttribute("purchaseId", purchase.getId());
-        return "redirect:/purchase/purchase-summary";
+        return "redirect:/purchase/purchase-summary/" + purchase.getId();
     }
 
-    @GetMapping("/purchase/purchase-summary")
-    public String showYourPurchase(@ModelAttribute("newTripPurchase") TripPurchase tripPurchase,
-            Model model) {
-//        model.addAttribute("newTripPurchase", tripPurchaseService.getTripPurchaseById(purchaseId));
+    @GetMapping("/purchase/purchase-summary/{purchaseId}")
+    public String showYourPurchase(@PathVariable("purchaseId") Long purchaseId,
+                                   Model model) {
+        model.addAttribute("newTripPurchase", tripPurchaseService.getTripPurchaseById(purchaseId).get());
         return "trip-purchase/purchase-summary";
     }
 

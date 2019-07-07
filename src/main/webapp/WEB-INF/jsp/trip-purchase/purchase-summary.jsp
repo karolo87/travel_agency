@@ -20,8 +20,13 @@
     <div>
         <h3>Podsumowanie:</h3>
 
-        ${purchaseId}
-        ${newTripPurchase.id}
+        Imię: ${newTripPurchase.client.firstName} <br/>
+        Nazwisko: ${newTripPurchase.client.lastName} <br/>
+        Ilość osób dorosłych: ${newTripPurchase.adultsQuantity} <br/>
+        Ilość dzieci: ${newTripPurchase.childrenQuantity} <br/>
+
+
+        Miasto wylotu: ${newTripPurchase.trip.departureCity.name} <br/>
     </div>
 
 </div>
