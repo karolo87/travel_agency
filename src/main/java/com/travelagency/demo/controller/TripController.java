@@ -94,7 +94,6 @@ public class TripController {
         return "trip/search-result";
     }
 
-
     @GetMapping("/trip/list")
     public String getAllTrips(Model model) {
         model.addAttribute("tripsList", tripService.getAllTrips());

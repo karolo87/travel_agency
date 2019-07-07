@@ -28,7 +28,6 @@ public interface TripRepository extends JpaRepository<Trip, Long> {
     List<Trip> findAllByAdultsQuantityGreaterThanEqual(Integer adultsQuantity);
     List<Trip> findAllByChildrenQuantityGreaterThanEqual(Integer childrenQuantity);
 
-
     Trip findByDepartureCity_NameContaining(String departureCityName);
     Trip findByDepartureAirport_NameContaining(String departureAirportName);
     Trip findByArrivalCity_NameContaining(String arrivalCityName);
