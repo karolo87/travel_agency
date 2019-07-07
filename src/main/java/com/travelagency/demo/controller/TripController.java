@@ -1,6 +1,7 @@
 package com.travelagency.demo.controller;
 
 import com.travelagency.demo.domain.model.Trip;
+import com.travelagency.demo.domain.model.TripPurchase;
 import com.travelagency.demo.service.CityService;
 import com.travelagency.demo.dto.TripDto;
 import com.travelagency.demo.service.AirportService;
@@ -11,10 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 
 @Controller
@@ -55,4 +54,14 @@ public class TripController {
         model.addAttribute("tripsList", tripService.getAllTrips());
         return "trip/list";
     }
+
+    @GetMapping("/trip/details/{tripId}")
+    public String showDetailsOfGivenTrip(@PathVariable("tripId") Long tripId,
+                                         Model model) {
+        model.addAttribute("trip", tripService.getTripById(tripId).get());
+        model.addAttribute("newPurchase", new TripPurchase());
+        return "trip/details";
+    }
+
+
 }
