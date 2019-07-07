@@ -51,4 +51,19 @@ public class TripPurchaseService {
     public Optional<TripPurchase> getTripPurchaseById(Long id) {
         return tripPurchaseRepository.findById(id);
     }
+
+    public Double calculateTripPurchaseFinances(Long tripPurchaseId) {
+        Optional<TripPurchase> foundTrip = getTripPurchaseById(tripPurchaseId);
+        if (foundTrip.isPresent()) {
+            Integer childrenQuantity = foundTrip.get().getChildrenQuantity();
+            double childPrice = foundTrip.get().getTrip().getChildPrice();
+
+            Integer adultsQuantity = foundTrip.get().getAdultsQuantity();
+            double adultPrice = foundTrip.get().getTrip().getAdultPrice();
+
+            Double amount = (childrenQuantity * childPrice) + (adultsQuantity * adultPrice);
+            return amount;
+        }
+        return null;
+    }
 }

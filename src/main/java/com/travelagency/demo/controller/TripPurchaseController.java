@@ -48,6 +48,7 @@ public class TripPurchaseController {
     public String showYourPurchase(@PathVariable("purchaseId") Long purchaseId,
                                    Model model) {
         model.addAttribute("newTripPurchase", tripPurchaseService.getTripPurchaseById(purchaseId).get());
+        model.addAttribute("amountOfMoney", tripPurchaseService.calculateTripPurchaseFinances(purchaseId));
         return "trip-purchase/purchase-summary";
     }
 

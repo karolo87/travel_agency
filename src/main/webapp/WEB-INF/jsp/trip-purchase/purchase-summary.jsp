@@ -27,6 +27,8 @@
 
 
         Miasto wylotu: ${newTripPurchase.trip.departureCity.name} <br/>
+
+        ${amountOfMoney}
     </div>
 
 </div>
