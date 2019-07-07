@@ -81,4 +81,24 @@ public class TripService {
         return tripRepository.save(trip);
     }
 
+    public TripDto createTripDtoFromTrip(Trip trip) {
+        TripDto tripDto = new TripDto();
+        tripDto.setId(trip.getId());
+        tripDto.setDepartureCity(trip.getDepartureCity().getName());
+        tripDto.setDepartureAirport(trip.getDepartureAirport().getName());
+        tripDto.setArrivalCity(trip.getArrivalCity().getName());
+        tripDto.setArrivalAirport(trip.getArrivalAirport().getName());
+        tripDto.setHotel(trip.getHotel().getName());
+        tripDto.setStartDate(trip.getStartDate().toString());
+        tripDto.setEndDate(trip.getEndDate().toString());
+        tripDto.setDaysQuantity(trip.getDaysQuantity());
+        tripDto.setType(trip.getType());
+        tripDto.setAdultPrice(trip.getAdultPrice());
+        tripDto.setChildPrice(trip.getChildPrice());
+        tripDto.setIsPromoted(trip.getIsPromoted());
+        tripDto.setAdultsQuantity(trip.getAdultsQuantity());
+        tripDto.setChildrenQuantity(trip.getChildrenQuantity());
+        return tripDto;
+    }
+
 }

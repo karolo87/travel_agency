@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Optional;
+
 
 @Controller
 public class TripController {
@@ -47,6 +49,26 @@ public class TripController {
     public String addNewTripPost(@ModelAttribute("newTrip") TripDto tripDto) {
         tripService.createTripFromDto(tripDto);
         return "redirect:/trip/list";
+    }
+
+    @GetMapping("/admin/edit-trip/{tripId}")
+    public String editTrip(@PathVariable("tripId") Long id, Model model) {
+        Trip trip = tripService.getTripById(id).get();
+        if (tripService.getTripById(id).isPresent()) {
+            TripDto editedTrip = tripService.createTripDtoFromTrip(trip);
+            model.addAttribute("editedTrip", editedTrip);
+            model.addAttribute("cities", cityService.getAllCities());
+            return "trip/edit";
+        }
+        return "redirect:/admin/add-trip";
+    }
+
+    @PostMapping("/admin/edit-trip/{tripId}")
+    public String editTripPost(@PathVariable("tripId") Long id,
+                               @ModelAttribute("editedTrip") TripDto tripDto) {
+        Trip trip = tripService.createTripFromDto(tripDto);
+        tripService.addNewTrip(trip);
+        return "redirect:/trip/details/{tripId}";
     }
 
     @GetMapping("/trip/list")

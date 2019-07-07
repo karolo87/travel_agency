@@ -24,6 +24,7 @@
         ${newPurchase.id} <br/>
 
         <a href="/buy-a-trip/${trip.id}">Kup wycieczkę</a>
+        <a href="/admin/edit-trip/${trip.id}">Edytuj wycieczkę</a>
 
 
     </div>
