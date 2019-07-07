@@ -29,7 +29,7 @@
                 Ilość dni: ${trip_promoted.daysQuantity} <br/>
                 Wycieczka promowana? ${trip_promoted.isPromoted} <br/>
                 Ilość miejsc dla dorosłych: ${trip_promoted.adultsQuantity}
-                <a href="/trip/details/${trip_promoted.id}">Kup wycieczkę</a>
+                <a href="/trip/details/${trip_promoted.id}">Pokaż szczegóły</a>
                 <hr>
             </div>
         </c:forEach>
@@ -45,7 +45,7 @@
                 Ilość dni: ${trip.daysQuantity} <br/>
                 Wycieczka promowana? ${trip.isPromoted} <br/>
                 Ilość miejsc dla dorosłych: ${trip.adultsQuantity} <br/>
-                <a href="/trip/details/${trip.id}">Kup wycieczkę</a>
+                <a href="/trip/details/${trip.id}">Pokaż szczegóły</a>
                 <hr>
             </div>
         </c:forEach>
@@ -53,17 +53,16 @@
 
     <h3>Lista wycieczek na dany kontynent:</h3>
     <div class="trips_section">
-        <c:forEach items="${tripsOfGivenContinent}" var="trip">
-            <div class="all_trips">
-                Miasto wylotu: ${trip.departureCity.name} <br/>
-                Miasto docelowe: ${trip.arrivalCity.name} <br/>
-                Cena za osobę dorosłą: ${trip.adultPrice} <br/>
-                Ilość dni: ${trip.daysQuantity} <br/>
-                Wycieczka promowana? ${trip.isPromoted} <br/>
-                Ilość miejsc dla dorosłych: ${trip.adultsQuantity} <br/>
-                <a href="/trip/details/${trip.id}">Kup wycieczkę</a>
-                <hr>
-            </div>
+        <c:forEach items="${allContinents}" var="continent">
+                <c:forEach items="${continent.countries}" var="country">
+                    <c:forEach items="${country.cityList}" var="city">
+                        <div class="all_trips">
+                        <c:forEach items="${city.arrivalTripList}" var="trip">
+                            ${continent.name} -> ${trip.arrivalCity.name}
+                        </c:forEach>
+                        </div>
+                    </c:forEach>
+                </c:forEach>
         </c:forEach>
     </div>
 
