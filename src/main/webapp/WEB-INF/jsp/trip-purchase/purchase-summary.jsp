@@ -20,6 +20,8 @@
     <div>
         <h3>Podsumowanie:</h3>
 
+        ${purchaseId}
+        ${newTripPurchase.id}
     </div>
 
 </div>

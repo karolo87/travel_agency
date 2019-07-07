@@ -19,6 +19,8 @@ public class IndexController {
     @GetMapping("/")
     public String mainPage(Model model){
         model.addAttribute("allTrips", tripService.getAllTrips());
+        model.addAttribute("promotedTrips", tripService.getPromotedTrips());
+        model.addAttribute("tripsOfGivenContinent", tripService.getAllTripsOfGivenContinent(1L));
         return "index";
     }
 

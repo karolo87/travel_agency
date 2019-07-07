@@ -24,7 +24,7 @@ public class TripPurchaseService {
         tripPurchaseRepository.save(tripPurchase);
     }
 
-    public Trip createPurchaseFromDto(Long tripId, TripPurchaseDto tripPurchaseDto) {
+    public TripPurchase createPurchaseFromDto(Long tripId, TripPurchaseDto tripPurchaseDto) {
         Optional<Trip> foundTrip = tripService.getTripById(tripId);
         TripPurchase tripPurchase = new TripPurchase();
         ClientsData clientsData = new ClientsData();
@@ -37,8 +37,15 @@ public class TripPurchaseService {
         tripPurchase.setAdultsQuantity(tripPurchaseDto.getAdultsQuantity());
         tripPurchase.setChildrenQuantity(tripPurchaseDto.getChildrenQuantity());
         foundTrip.ifPresent(tripPurchase::setTrip);
-        tripPurchaseRepository.save(tripPurchase);
-        return foundTrip.get();
+
+        if (foundTrip.isPresent()) {
+            foundTrip.get()
+                    .setAdultsQuantity(foundTrip.get().getAdultsQuantity() - tripPurchaseDto.getAdultsQuantity());
+            foundTrip.get()
+                    .setChildrenQuantity(foundTrip.get().getChildrenQuantity() - tripPurchaseDto.getChildrenQuantity());
+        }
+
+        return tripPurchaseRepository.save(tripPurchase);
     }
 
     public Optional<TripPurchase> getTripPurchaseById(Long id) {

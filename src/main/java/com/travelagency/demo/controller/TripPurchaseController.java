@@ -1,15 +1,16 @@
 package com.travelagency.demo.controller;
 
+import com.travelagency.demo.domain.model.Trip;
+import com.travelagency.demo.domain.model.TripPurchase;
 import com.travelagency.demo.dto.TripPurchaseDto;
 import com.travelagency.demo.service.TripPurchaseService;
 import com.travelagency.demo.service.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 
 @Controller
@@ -36,15 +37,23 @@ public class TripPurchaseController {
 
     @PostMapping("/buy-a-trip/{tripId}")
     public String buyATripPost(@PathVariable("tripId") Long tripId,
-                               @ModelAttribute("newTripPurchase") TripPurchaseDto tripPurchaseDto) {
-        tripPurchaseService.createPurchaseFromDto(tripId, tripPurchaseDto);
+                               @ModelAttribute("newTripPurchase") TripPurchaseDto tripPurchaseDto,
+                               Model model){
+        TripPurchase purchase = tripPurchaseService.createPurchaseFromDto(tripId, tripPurchaseDto);
+        model.addAttribute("purchaseId", purchase.getId());
+        return "redirect:/purchase/purchase-summary";
+    }
+
+    @GetMapping("/purchase/purchase-summary")
+    public String showYourPurchase(@ModelAttribute("newTripPurchase") TripPurchase tripPurchase,
+            Model model) {
+//        model.addAttribute("newTripPurchase", tripPurchaseService.getTripPurchaseById(purchaseId));
         return "trip-purchase/purchase-summary";
     }
 
-    @GetMapping("/purchase-summary/{clientId}")
-    public String showYourPurchase(@PathVariable("clientId") Long id,
-            Model model) {
-        model.addAttribute("yourPurchase", tripPurchaseService.getTripPurchaseById(id));
+    @PostMapping("/purchase/purchase-summary")
+    public String showYourPurchasePost() {
+
         return "trip-purchase/purchase-summary";
     }
 

@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class TripPurchaseDto {
 
+    private String purchaseId;
     private String clientFirstName;
     private String clientLastName;
     private Integer adultsQuantity;

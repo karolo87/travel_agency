@@ -82,6 +82,16 @@
             <th><form:input path="childrenQuantity"/></th>
         </tr>
         <tr>
+            <th>Wycieczka promowana?</th>
+            <th>
+                <form:select path="isPromoted">
+                    <form:option value="Tak">Tak</form:option>
+                    <form:option value="Nie">Nie</form:option>
+                </form:select>
+
+            </th>
+        </tr>
+        <tr>
             <th></th>
             <th><input type="submit" value="Dodaj"/></th>
         </tr>

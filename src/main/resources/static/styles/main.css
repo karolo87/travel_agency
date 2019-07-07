@@ -1,0 +1,15 @@
+* {
+    background-color: aquamarine;
+}
+
+.trips_section{
+    background-color: beige;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.all_trips{
+    background-color: chartreuse;
+    width: 100%;
+}

@@ -32,7 +32,7 @@ public class Trip {
     private String type;    //BB, HB, FB, AI
     private double adultPrice;
     private double childPrice;
-    // promowana ????
+    private String isPromoted;
     private Integer adultsQuantity;
     private Integer childrenQuantity;
 
