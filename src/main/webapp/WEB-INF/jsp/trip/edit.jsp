@@ -31,7 +31,13 @@
         </tr>
         <tr>
             <th>Lotnisko wylotu:</th>
-            <th><form:input path="departureAirport"/></th>
+            <th>
+                <form:select path="departureAirport">
+                    <c:forEach items="${airports}" var="airport">
+                        <form:option value="${airport.name}"/>
+                    </c:forEach>
+                </form:select>
+            </th>
         </tr>
         <tr>
             <th>Miasto przylotu:</th>
@@ -45,11 +51,23 @@
         </tr>
         <tr>
             <th>Lotnisko przylotu:</th>
-            <th><form:input path="arrivalAirport"/></th>
+            <th>
+                <form:select path="arrivalAirport">
+                    <c:forEach items="${airports}" var="airport">
+                        <form:option value="${airport.name}"/>
+                    </c:forEach>
+                </form:select>
+            </th>
         </tr>
         <tr>
             <th>Hotel:</th>
-            <th><form:input path="hotel"/></th>
+            <th>
+                <form:select path="hotel">
+                    <c:forEach items="${hotels}" var="hotel">
+                        <form:option value="${hotel.name}"/>
+                    </c:forEach>
+                </form:select>
+            </th>
         </tr>
         <tr>
             <th>Początek wycieczki (rrrr-MM-dd):</th>
@@ -65,7 +83,14 @@
         </tr>
         <tr>
             <th>Wariant wyżywienia:</th>
-            <th><form:input path="type"/></th>
+            <th>
+                <form:select path="type">
+                    <form:option value="BB"/>
+                    <form:option value="HB"/>
+                    <form:option value="FB"/>
+                    <form:option value="AI"/>
+                </form:select>
+            </th>
         </tr>
         <tr>
             <th>Cena za osobę dorosłą:</th>
@@ -95,7 +120,7 @@
         </tr>
         <tr>
             <th></th>
-            <th><input type="submit" value="Dodaj"/></th>
+            <th><input type="submit" value="Edytuj"/></th>
         </tr>
     </table>
 

@@ -27,6 +27,10 @@ public class HotelService {
         return hotelRepository.save(hotel);
     }
 
+    public List<Hotel> getAllHotels() {
+        return hotelRepository.findAll();
+    }
+
     public List<Hotel> findHotelsByCityId(Long cityId) {
         return hotelRepository.findAllByCity_Id(cityId);
     }

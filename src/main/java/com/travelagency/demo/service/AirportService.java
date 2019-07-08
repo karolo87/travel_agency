@@ -28,6 +28,10 @@ public class AirportService {
         airportRepository.save(airport);
     }
 
+    public List<Airport> getAllAirports() {
+        return airportRepository.findAll();
+    }
+
     public List<Airport> getAllAirportsOfGivenCity(Long cityId) {
         return airportRepository.findAllByCity_Id(cityId);
     }

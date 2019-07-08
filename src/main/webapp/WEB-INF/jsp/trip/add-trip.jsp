@@ -15,7 +15,6 @@
 
 <form:form action="/admin/add-trip" modelAttribute="newTrip" method="post">
 
-
     <table>
         <tr>
             <th>Miasto wylotu:</th>
@@ -29,7 +28,13 @@
         </tr>
         <tr>
             <th>Lotnisko wylotu:</th>
-            <th><form:input path="departureAirport"/></th>
+            <th>
+                <form:select path="departureAirport">
+                    <c:forEach items="${airports}" var="airport">
+                        <form:option value="${airport.name}"/>
+                    </c:forEach>
+                </form:select>
+            </th>
         </tr>
         <tr>
             <th>Miasto przylotu:</th>
@@ -43,11 +48,23 @@
         </tr>
         <tr>
             <th>Lotnisko przylotu:</th>
-            <th><form:input path="arrivalAirport"/></th>
+            <th>
+                <form:select path="arrivalAirport">
+                    <c:forEach items="${airports}" var="airport">
+                        <form:option value="${airport.name}"/>
+                    </c:forEach>
+                </form:select>
+            </th>
         </tr>
         <tr>
             <th>Hotel:</th>
-            <th><form:input path="hotel"/></th>
+            <th>
+                <form:select path="hotel">
+                    <c:forEach items="${hotels}" var="hotel">
+                        <form:option value="${hotel.name}"/>
+                    </c:forEach>
+                </form:select>
+            </th>
         </tr>
         <tr>
             <th>Początek wycieczki (rrrr-MM-dd):</th>
@@ -63,7 +80,14 @@
         </tr>
         <tr>
             <th>Wariant wyżywienia:</th>
-            <th><form:input path="type"/></th>
+            <th>
+                <form:select path="type">
+                    <form:option value="BB"/>
+                    <form:option value="HB"/>
+                    <form:option value="FB"/>
+                    <form:option value="AI"/>
+                </form:select>
+            </th>
         </tr>
         <tr>
             <th>Cena za osobę dorosłą:</th>
@@ -85,7 +109,7 @@
             <th>Wycieczka promowana?</th>
             <th>
                 <form:select path="isPromoted">
-                    <form:option value="Tak" label="joo"/>
+                    <form:option value="Tak"/>
                     <form:option value="Nie"/>
                 </form:select>
 

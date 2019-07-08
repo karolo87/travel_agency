@@ -17,6 +17,7 @@
     <a href="/country/all-countries">Państwa</a> |
     <a href="/city/all-cities">Miasta</a> ||
     <a href="/search">Wyszukaj wycieczkę</a> |
+    <a href="/trip/list">Lista wycieczek</a> |
     <a href="/admin/add-trip">Dodaj wycieczkę</a>
 </menu>
 

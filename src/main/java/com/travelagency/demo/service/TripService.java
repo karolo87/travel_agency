@@ -3,10 +3,11 @@ package com.travelagency.demo.service;
 import com.travelagency.demo.domain.model.Trip;
 import com.travelagency.demo.domain.repository.TripRepository;
 
-import com.travelagency.demo.dto.SearchTrip;
 import com.travelagency.demo.dto.TripDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -45,6 +46,10 @@ public class TripService {
         return tripRepository.findAll();
     }
 
+    public Page<Trip> getAllTrips(Pageable pageable) {
+        return tripRepository.findAll(pageable);
+    }
+
     public List<Trip> getAllTripsToGivenCountry(Long countryId) {
         return tripRepository.findAllByArrivalCity_Country_Id(countryId);
     }
@@ -63,7 +68,13 @@ public class TripService {
     }
 
     public Trip createTripFromDto(TripDto tripDto) {
-        Trip trip = new Trip();
+        Trip trip;
+        if (tripDto.getId() == null) {
+            trip = new Trip();
+        } else {
+            trip = getTripById(tripDto.getId()).get();
+        }
+//        Trip trip = new Trip();
         trip.setDepartureCity(cityService.findCityByName(tripDto.getDepartureCity()));
         trip.setDepartureAirport(airportService.findByName(tripDto.getDepartureAirport()));
         trip.setArrivalCity(cityService.findCityByName(tripDto.getArrivalCity()));
@@ -78,6 +89,7 @@ public class TripService {
         trip.setAdultsQuantity(tripDto.getAdultsQuantity());
         trip.setChildrenQuantity(tripDto.getChildrenQuantity());
         trip.setIsPromoted(tripDto.getIsPromoted());
+
 
         return tripRepository.save(trip);
     }

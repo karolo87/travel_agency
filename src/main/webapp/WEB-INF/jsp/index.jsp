@@ -54,15 +54,20 @@
     <h3>Lista wycieczek na dany kontynent:</h3>
     <div class="trips_section">
         <c:forEach items="${allContinents}" var="continent">
+            <div class="trip-continent">
+                ${continent.name}
                 <c:forEach items="${continent.countries}" var="country">
                     <c:forEach items="${country.cityList}" var="city">
                         <div class="all_trips">
-                        <c:forEach items="${city.arrivalTripList}" var="trip">
-                            ${continent.name} -> ${trip.arrivalCity.name}
-                        </c:forEach>
+                            <c:forEach items="${city.arrivalTripList}" var="trip">
+                                <div class="trip-city">
+                                -> ${trip.arrivalCity.name}
+                                </div>
+                            </c:forEach>
                         </div>
                     </c:forEach>
                 </c:forEach>
+            </div>
         </c:forEach>
     </div>
 

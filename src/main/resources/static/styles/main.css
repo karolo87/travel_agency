@@ -13,3 +13,13 @@
     background-color: chartreuse;
     width: 100%;
 }
+
+.trip-continent {
+    background-color: cornflowerblue;
+}
+
+.trip{
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: row;
+}
