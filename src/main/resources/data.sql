@@ -53,3 +53,7 @@ INSERT INTO trip VALUES ('2', '3299.99', '30', '2499.99', '10', '12', '2019-09-2
 INSERT INTO trip VALUES ('3', '3899.99', '60', '2899.99', '25', '10', '2019-10-29', 'Nie', '2019-10-19', 'BB', '5', '7', '1', '3', '5');
 INSERT INTO trip VALUES ('4', '5499.99', '40', '4899.99', '10', '14', '2019-12-29', 'Tak', '2019-12-15', 'HB', '6', '9', '7', '8', '6');
 INSERT INTO trip VALUES ('5', '11999.99', '45', '8899.99', '25', '12', '2019-12-13', 'Tak', '2019-12-01', 'BB', '8', '10', '7', '8', '7');
+
+-- INSERT INTO user VALUES ('1', 'karoladmin', 'admin123', 'admin123');
+-- INSERT INTO role VALUES ('1', 'admin');
+-- INSERT INTO user_role VALUES ('1', '1');

@@ -18,7 +18,9 @@
     <a href="/city/all-cities">Miasta</a> ||
     <a href="/search">Wyszukaj wycieczkę</a> |
     <a href="/trip/list">Lista wycieczek</a> |
-    <a href="/admin/add-trip">Dodaj wycieczkę</a>
+    <a href="/admin/add-trip">Dodaj wycieczkę</a> ||
+    <a href="/register">Zarejestruj</a> |
+    <a href="/login">Zaloguj</a>
 </menu>
 
 
