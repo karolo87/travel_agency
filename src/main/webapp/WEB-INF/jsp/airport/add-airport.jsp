@@ -7,15 +7,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Dodaj lotnisko</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/main.css"/>
+
 </head>
 <body>
 <%@include file="../fragments/header.jspf" %>
 
-<form:form action="/admin/add-airport/${cityId}" modelAttribute="newAirport" method="post">
 
-    Nazwa lotniska: <form:input path="name"/>
-    <input type="submit" value="Dodaj"/>
-</form:form>
+<div class="container">
+
+    <form:form action="/admin/add-airport/${cityId}" modelAttribute="newAirport" method="post">
+
+        Nazwa lotniska: <form:input path="name"/>
+        <input type="submit" value="Dodaj"/>
+    </form:form>
+
+</div>
 
 </body>
 </html>
