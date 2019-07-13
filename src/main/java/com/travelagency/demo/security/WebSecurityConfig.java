@@ -1,12 +1,12 @@
 package com.travelagency.demo.security;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -15,7 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-//@RequiredArgsConstructor
+@EnableGlobalMethodSecurity(securedEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private UserDetailsService userDetailsService;
@@ -26,23 +26,39 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public BCryptPasswordEncoder passwordEncoder(){
+    public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .csrf().disable()
+//                .authorizeRequests()
+//                .antMatchers("/styles/**").permitAll()
+//                .antMatchers("/h2-console/**").permitAll()
+//                .antMatchers("/").permitAll()
+//                .antMatchers("/trip/**").permitAll()
+//                .antMatchers("/search").permitAll()
+//                .antMatchers("/buy-a-trip/**").permitAll()
+//                .antMatchers("/trip-purchase/**").permitAll()
+//                .antMatchers("/purchase/**").permitAll()
+//                .antMatchers("/admin/**").hasRole("ADMIN")
+//                .antMatchers("/register").anonymous()
+//                .antMatchers("/login").permitAll()
+//                .anyRequest().authenticated()
+//                .and()
+                .authorizeRequests()
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .and()
                 .formLogin()
                 .loginPage("/login")
-                .permitAll()
+                .defaultSuccessUrl("/", true)
                 .and()
-                .antMatcher("/admin/**")
-                .authorizeRequests()
-                .antMatchers("/registration").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .logout().permitAll();
+                .logout()
+                .logoutUrl("/perform_logout")
+                .deleteCookies("JSESSIONID")
+                .logoutSuccessUrl("/login").and().headers().frameOptions().disable();
     }
 
     @Bean

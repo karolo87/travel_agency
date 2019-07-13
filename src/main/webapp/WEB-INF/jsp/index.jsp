@@ -52,7 +52,7 @@
     </div>
 
     <h3>Lista wycieczek na dany kontynent:</h3>
-    <div class="trips_section">
+        <div class="trips_section">
         <c:forEach items="${allContinents}" var="continent">
             <div class="trip-continent">
                 ${continent.name}

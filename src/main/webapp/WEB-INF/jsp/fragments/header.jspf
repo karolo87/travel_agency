@@ -20,8 +20,11 @@
     <a href="/trip/list">Lista wycieczek</a> |
     <a href="/admin/add-trip">Dodaj wycieczkę</a> ||
     <a href="/register">Zarejestruj</a> |
-    <a href="/login">Zaloguj</a>
+    <a href="/login">Zaloguj</a> |
+    <a href="/perform_logout">Wyloguj</a>
+
 </menu>
+
 
 
 </body>

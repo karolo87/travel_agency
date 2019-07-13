@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Create an account</title>
+    <title>Zaloguj</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/main.css"/>
 
 </head>
@@ -17,11 +17,17 @@
         <%@include file="fragments/header.jspf"%>
     </header>
 
-    <form action="/login" method="post">
+    <form name="loginForm" action="/login" method="post">
         Login:<input name="username"/>
         Hasło:<input type="password" name="password"/>
         <input type="submit" value="Zaloguj"/>
     </form>
+
+<%--    <form:form action="/login" method="post">--%>
+<%--        Login:<form:input path="username" />--%>
+<%--        Password:<form:password path="password"/>--%>
+<%--        <input type="submit" value="Zaloguj"/>--%>
+<%--    </form:form>--%>
 
 
 </div>

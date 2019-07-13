@@ -7,16 +7,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Dodaj wycieczkę</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/main.css"/>
+
 </head>
 <body>
 <%@include file="../fragments/header.jspf" %>
 
-<h2>Dodaj wycieczkę</h2>
+<div class="container">
+    <h2>Dodaj wycieczkę</h2>
 
-<form:form action="/search" modelAttribute="searchedTrip" method="post">
+    <form:form action="/search" modelAttribute="searchedTrip" method="post">
 
-
-    <form:input path="value"/>
+        <form:input path="value"/>
         <form:select path="param">
             <form:option label="Miasto wylotu" value="departureCity"/>
             <form:option label="Lotnisko wylotu" value="departureAirport"/>
@@ -33,11 +35,11 @@
             <form:option label="Min. ilość miejsc dla dzieci" value="adultsQuantity"/>
             <form:option label="Wycieczka promowana" value="childrenQuantity"/>
         </form:select>
-    <input type="submit" value="Szukaj"/>
+        <input type="submit" value="Szukaj"/>
 
 
-</form:form>
-
+    </form:form>
+</div>
 
 
 </body>

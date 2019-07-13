@@ -2,6 +2,10 @@
     background-color: aquamarine;
 }
 
+.container {
+    width: 80%;
+}
+
 .trips_section{
     background-color: beige;
     width: 100%;

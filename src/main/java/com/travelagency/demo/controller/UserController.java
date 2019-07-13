@@ -1,35 +1,20 @@
 package com.travelagency.demo.controller;
-
-import com.travelagency.demo.security.service.SecurityService;
-import com.travelagency.demo.security.service.SecurityServiceImpl;
 import com.travelagency.demo.security.service.UserService;
 import com.travelagency.demo.security.validator.UserValidator;
 import com.travelagency.demo.security.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequiredArgsConstructor
 public class UserController {
 
-//    @Autowired
-    private UserService userService;
-//    @Autowired
-    private SecurityService securityService;
-//    @Autowired
-    private UserValidator userValidator;
+    private final UserService userService;
+    private final UserValidator userValidator;
 
-    @Autowired
-    public UserController(UserService userService, SecurityService securityService, UserValidator userValidator) {
-        this.userService = userService;
-        this.securityService = securityService;
-        this.userValidator = userValidator;
-    }
 
     @GetMapping("/register")
     public String registerUser(Model model) {
@@ -44,7 +29,6 @@ public class UserController {
             return "register";
         }
         userService.save(userForm);
-        securityService.autoLogin(userForm.getUsername(), userForm.getConfirmPassword());
         return "redirect:/";
     }
 
@@ -57,15 +41,6 @@ public class UserController {
             model.addAttribute("message", "Wylogowano pomyślnie.");
         }
         return "login";
-    }
-
-    @PostMapping("/login")
-    public String loginPost(@RequestParam("username") String login,
-                            @RequestParam("password") String password) {
-        SecurityServiceImpl securityService = new SecurityServiceImpl();
-        securityService.autoLogin(login, password);
-
-        return "/";
     }
 
     @GetMapping("/welcome")
