@@ -7,15 +7,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista lotnisk</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/header.css"/>
 </head>
 <body>
-<%@include file="../fragments/header.jspf" %>
+<div class="container">
+    <%@include file="../fragments/header.jspf" %>
 
-<c:forEach items="${airportsList}" var="airport">
-    ${airport.name} |
-    ${airport.city.name}
-    <br/>
-</c:forEach>
+
+    <div class="trips_section">
+        <div class="trips">
+            <c:forEach items="${airportsList}" var="airport">
+                <div class="trip">
+                        ${airport.name} |
+                        ${airport.city.name}
+                </div>
+            </c:forEach>
+        </div>
+    </div>
+
+</div>
+
 
 </body>
 </html>

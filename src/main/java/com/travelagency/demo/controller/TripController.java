@@ -12,13 +12,11 @@ import com.travelagency.demo.service.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @Controller
@@ -104,14 +102,6 @@ public class TripController {
         return "trip/search-result";
     }
 
-//    @GetMapping("/trip/list")
-//    public String getAllTrips(Model model) {
-//        Pageable pageable = PageRequest.of(1, 2, Sort.Direction.ASC, "startDate");
-//        List<Trip> trips = tripService.getAllTrips(pageable).getContent();
-//        model.addAttribute("tripsList", trips);
-//        return "trip/list";
-//    }
-
     @GetMapping("/trip/list")
     public String getAllTrips(Model model) {
         model.addAttribute("pageForm", new PageForm());
@@ -129,6 +119,29 @@ public class TripController {
         );
         List<Trip> trips = tripService.getAllTrips(pageable).getContent();
         model.addAttribute("tripsList", trips);
+
+        return "trip/list";
+    }
+
+    @GetMapping("/trip/list/{countryId}")
+    public String getAllTripsToGivenCountry(@PathVariable("countryId") Long countryId,
+                                            @ModelAttribute("pageForm") PageForm pageForm,
+                                            Model model) {
+        model.addAttribute("pageForm", new PageForm());
+        model.addAttribute("tripsList", tripService.getAllTripsToGivenCountry(countryId));
+        return "trip/list";
+    }
+
+    @PostMapping("/trip/list/{countryId}")
+    public String getAllTripsToGivenCountryPost(@PathVariable("countryId") Long countryId,
+                                                @ModelAttribute("pageForm") PageForm pageForm,
+                                                Model model) {
+        Pageable pageable = PageRequest.of(pageForm.getPage(),
+                pageForm.getSize(),
+                pageForm.getSortOrder(),
+                pageForm.getSortField());
+        List<Trip> tripList = tripService.getAllTripsToGivenCountry(countryId, pageable);
+        model.addAttribute("tripsList", tripList);
 
         return "trip/list";
     }

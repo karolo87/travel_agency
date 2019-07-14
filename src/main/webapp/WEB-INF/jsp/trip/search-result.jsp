@@ -7,7 +7,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Dodaj wycieczkę</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/main.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/header.css"/>
 
 </head>
 <body>
@@ -16,14 +17,18 @@
     <h2>Dodaj wycieczkę</h2>
 
     <div class="trips_section">
-        <c:forEach items="${foundTrips}" var="trip">
-            <div class="all_trips">
-                    ${trip.departureCity.name} <br/>
-                    ${trip.departureAirport.name} <br/>
-                    ${trip.arrivalCity.name} <br/>
-                    ${trip.arrivalAirport.name} <br/>
-            </div>
-        </c:forEach>
+        <div class="trips">
+            <c:forEach items="${foundTrips}" var="trip">
+                <div class="trip">
+                        ${trip.departureCity.name} <br/>
+                        ${trip.departureAirport.name} <br/>
+                        ${trip.arrivalCity.name} <br/>
+                        ${trip.arrivalAirport.name} <br/>
+                    <a href="/trip/details/${trip.id}" class="details_button">Pokaż szczegóły</a>
+                </div>
+            </c:forEach>
+        </div>
+
 
 
     </div>

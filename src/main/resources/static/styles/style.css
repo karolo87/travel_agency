@@ -1,0 +1,67 @@
+* {
+    font-family: Lato, sans-serif;
+    font-size: 18px;
+    background-color: #f4f4f4;
+}
+
+.container {
+    background-color: #007bff;
+}
+
+.trips {
+    display: flex;
+    flex-direction: row;
+    /*width: 800px;*/
+}
+
+.trips_section {
+    background-color: beige;
+}
+
+.trips_section title {
+    font-size: 25px;
+}
+
+.trip {
+    width: 300px;
+    padding: 10px;
+    border-style: solid;
+    border-color: #007bff;
+}
+
+.trip_description {
+    font-style: italic;
+}
+
+.price {
+    color: brown;
+}
+
+.trip_details {
+    background-color: burlywood;
+}
+
+.label {
+    font-weight: bold;
+}
+
+.detail {
+    font-style: italic;
+}
+
+.details_button {
+    background-color: #1c87c9;
+    border: none;
+    color: white;
+    /*padding: 20px 34px;*/
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    /*margin: 4px 2px;*/
+    cursor: pointer;
+}
+
+.details_button:hover {
+    color: #F97300;
+}

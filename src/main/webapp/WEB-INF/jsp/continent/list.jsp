@@ -7,20 +7,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista kontynentów</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/header.css"/>
 </head>
 <body>
-<%@include file="../fragments/header.jspf" %>
+<div class="container">
 
-<h2>LISTA</h2>
+    <%@include file="../fragments/header.jspf" %>
 
-<a href="/admin/add-continent">Dodaj kontynent</a><br/><br/>
+    <h2>LISTA</h2>
 
-<c:forEach items="${continentList}" var="continent">
-    ${continent.name}
-    <a href="/country/list/${continent.id}">Lista krajów</a>
-    <a href="/admin/add-country/${continent.id}">Dodaj kraj</a>
-    <br/>
-</c:forEach>
+    <sec:authorize access="hasRole('ADMIN')">
+        <a href="/admin/add-continent">Dodaj kontynent</a><br/><br/>
+    </sec:authorize>
+
+    <div class="trips_section">
+        <div class="trips">
+            <c:forEach items="${continentList}" var="continent">
+                <div class="trip">
+                        ${continent.name} <br/>
+                    <a href="/country/list/${continent.id}">Lista krajów</a>
+                    <sec:authorize access="hasRole('ADMIN')">
+                        <a href="/admin/add-country/${continent.id}">Dodaj kraj</a>
+                    </sec:authorize>
+
+                </div>
+            </c:forEach>
+        </div>
+    </div>
+
+
+</div>
+
 
 </body>
 </html>

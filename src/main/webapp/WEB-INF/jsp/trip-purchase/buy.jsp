@@ -8,10 +8,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Kup wycieczkę</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/header.css"/>
 </head>
 <body>
 
-<div>
+<div class="container">
     <header>
         <%@include file="../fragments/header.jspf" %>
     </header>

@@ -7,15 +7,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista hoteli</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/header.css"/>
 </head>
 <body>
-<%@include file="../fragments/header.jspf" %>
+<div class="container">
+    <%@include file="../fragments/header.jspf" %>
 
-<c:forEach items="${hotelsList}" var="hotel">
-    ${hotel.name} |
-    ${hotel.standard} |
-    ${hotel.description}
-</c:forEach>
+    <c:forEach items="${hotelsList}" var="hotel">
+        ${hotel.name} |
+        ${hotel.standard} |
+        ${hotel.description}
+    </c:forEach>
+</div>
+
 
 
 </body>

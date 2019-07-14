@@ -1,0 +1,110 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%--<%@ taglib prefix="prefix" uri="http://www.springframework.org/tags"%>--%>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Travel agency</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/main.css"/>
+
+</head>
+<body>
+
+<%--<div class="row">--%>
+
+
+    <nav class="navbar navbar-expand-lg fixed-top ">
+        <a class="navbar-brand" href="/">Strona główna</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav mr-4">
+                <li class="nav-item">
+                    <a class="nav-link" data-value="about" href="/continent/list">Kontynenty</a></li>
+                <li class="nav-item">
+                    <a class="nav-link " data-value="portfolio" href="/search">Szukaj</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " data-value="blog" href="#">Blog</a></li>
+
+                <sec:authorize access="!isAnonymous()">
+                    <li class="nav-item">
+                        <a class="nav-link " data-value="team" href="/perform_logout">Wyloguj</a>
+                    </li>
+                </sec:authorize>
+
+                <sec:authorize access="isAnonymous()">
+                    <li class="nav-item">
+                        <a class="nav-link " data-value="team" href="/login">Zaloguj</a>
+                    </li>
+                </sec:authorize>
+
+                <sec:authorize access="isAnonymous()">
+                    <li class="nav-item">
+                        <a class="nav-link " data-value="team" href="/register">Zarejestruj</a>
+                    </li>
+                </sec:authorize>
+
+                <li class="nav-item">
+                    <a class="nav-link " data-value="contact" href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+<%--    <header class="header">--%>
+<%--&lt;%&ndash;        <div class="overlay">&ndash;%&gt;--%>
+<%--&lt;%&ndash;        </div>&ndash;%&gt;--%>
+<%--        <div class="container">--%>
+
+<%--            <div class="description ">--%>
+<%--                <h1>-Travel Agency---%>
+<%--                    <p>U nas wycieczki po całym świecie!</p>--%>
+<%--                    <button class="btn btn-outline-secondary btn-lg">See more</button>--%>
+<%--                </h1>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </header>--%>
+
+<%--    <menu>--%>
+<%--        <a href="/">Strona główna</a> |--%>
+<%--        <a href="/continent/list">Kontynenty</a> |--%>
+<%--        <a href="/country/all-countries">Państwa</a> |--%>
+<%--        <a href="/city/all-cities">Miasta</a> ||--%>
+<%--        <a href="/search">Wyszukaj wycieczkę</a> |--%>
+<%--        <a href="/trip/list">Lista wycieczek</a> |--%>
+<%--        <a href="/admin/add-trip">Dodaj wycieczkę</a> |--%>
+
+<%--        &lt;%&ndash;    <sec:authentication property="username" var="username">&ndash;%&gt;--%>
+<%--        &lt;%&ndash;        ${username}&ndash;%&gt;--%>
+<%--        &lt;%&ndash;    </sec:authentication>&ndash;%&gt;--%>
+
+<%--        <sec:authorize access="isAnonymous()">--%>
+<%--            <a href="/register">Zarejestruj</a> |--%>
+<%--            <a href="/login">Zaloguj</a>--%>
+<%--        </sec:authorize>--%>
+
+<%--        <sec:authorize access="!isAnonymous()">--%>
+<%--            <a href="/perform_logout">Wyloguj</a>--%>
+<%--        </sec:authorize>--%>
+
+        <%--    <sec:authorize access="hasRole('ADMIN')">--%>
+        <%--        <a href="/perform_logout">Wyloguj</a>--%>
+        <%--    </sec:authorize>--%>
+
+
+<%--    </menu>--%>
+
+<%--</div>--%>
+
+
+<%--<script type="text/javascript" src='${pageContext.request.contextPath}/js/main.js'></script>--%>
+</body>
+</html>

@@ -7,7 +7,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista wycieczek</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/main.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/header.css"/>
 
 </head>
 <body>
@@ -37,23 +38,23 @@
     </form:form>
 
     <div class="trips_section">
-        <c:forEach items="${tripsList}" var="trip">
-            <div class="trip">
-                <ul>
-                    <li>Miasto wylotu: ${trip.departureCity.name}</li>
-                    <li>Miasto przylotu: ${trip.arrivalCity.name}</li>
-                    <li>Lotnisko wylotu: ${trip.departureAirport.name}</li>
-                    <li>Lotnisko przylotu: ${trip.arrivalAirport.name}</li>
-                    <li>Hotel: ${trip.hotel.name}</li>
-                    <li>Początek wycieczki: ${trip.startDate}</li>
-                    <li>Koniec wycieczki: ${trip.endDate}</li>
-                    <li>Ilość dni: ${trip.daysQuantity}</li>
-                    <li>Cena: ${trip.adultPrice}</li>
-                    <li><a href="/trip/details/${trip.id}">Pokaż szczegóły</a></li>
-                </ul>
-            </div>
+        <div class="trips">
+            <c:forEach items="${tripsList}" var="trip">
+                <div class="trip">
+                    <span class="label">Miasto wylotu:</span><span class="detail"> ${trip.departureCity.name}</span><br/>
+                    <span class="label">Miasto przylotu:</span><span class="detail"> ${trip.arrivalCity.name}</span><br/>
+                    <span class="label">Lotnisko wylotu:</span><span class="detail"> ${trip.departureAirport.name}</span><br/>
+                    <span class="label">Lotnisko przylotu:</span><span class="detail"> ${trip.arrivalAirport.name}</span><br/>
+                    <span class="label">Hotel:</span><span class="detail"> ${trip.hotel.name}</span><br/>
+                    <span class="label">Początek wycieczki:</span><span class="detail"> ${trip.startDate}</span><br/>
+                    <span class="label">Koniec wycieczki:</span><span class="detail"> ${trip.endDate}</span><br/>
+                    <span class="label">Ilość dni:</span><span class="detail"> ${trip.daysQuantity}</span><br/>
+                    <span class="label">Cena:</span><span class="detail"> ${trip.adultPrice}</span><br/>
+                        <a href="/trip/details/${trip.id}" class="details_button">Pokaż szczegóły</a>
+                </div>
+            </c:forEach>
+        </div>
 
-        </c:forEach>
     </div>
 </div>
 
