@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,6 +55,10 @@ public class TripService {
         return tripRepository.findAllByArrivalCity_Country_Id(countryId);
     }
 
+    public List<Trip> getAllTripsToGivenCountry(Long countryId, Pageable pageable) {
+        return getAllTripsToGivenCountry(countryId, pageable);
+    }
+
     public Optional<Trip> getTripById(Long id) {
         return tripRepository.findById(id);
     }
@@ -62,6 +67,13 @@ public class TripService {
         String isPromoted = "Tak";
         return tripRepository.findByIsPromotedLike("Tak");
     }
+
+    public List<Trip> getTripsOrderedByStartDateDesc() {
+        List<Trip> trips = tripRepository.findAll();
+        trips.sort(Comparator.comparing(Trip::getStartDate).reversed());
+        return trips;
+    }
+
 
     public List<Trip> getAllTripsOfGivenContinent(Long continentId) {
         return tripRepository.findAllByArrivalCity_Country_Continent_Id(continentId);
@@ -147,4 +159,9 @@ public class TripService {
             return null;
     }
 
+    public List<Trip> getTripsOrderedByStartDateAsc() {
+        List<Trip> trips = tripRepository.findAll();
+        trips.sort(Comparator.comparing(Trip::getStartDate));
+        return trips;
+    }
 }

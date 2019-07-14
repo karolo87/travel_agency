@@ -7,6 +7,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista krajów</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/header.css"/>
 </head>
 <body>
 <%@include file="../fragments/header.jspf" %>

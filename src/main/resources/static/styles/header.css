@@ -1,0 +1,21 @@
+.navbar {
+    background-color: goldenrod;
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+}
+
+.nav-link {
+    width: 150px;
+    height: 100%;
+    background-color: goldenrod;
+    padding: 5px;
+}
+
+.nav-link a{
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    background-color: red;
+}

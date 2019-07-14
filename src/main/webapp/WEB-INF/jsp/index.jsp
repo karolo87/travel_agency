@@ -1,77 +1,71 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Super hiper biuro podróży!!</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/main.css"/>
-
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/header.css"/>
 </head>
 <body>
 
-<div>
-    <header>
-        <%@include file="./fragments/header.jspf" %>
-    </header>
+<div class="container">
+    <%@include file="fragments/header.jspf" %>
 
-    <h2>Strona główna</h2>
+    <div class="main-page">
+        <h1>Super Biuro Podróży!</h1>
 
-    <h3>Wycieczki promowane:</h3>
-    <div class="trips_section">
-        <c:forEach items="${promotedTrips}" var="trip_promoted">
-            <div class="all_trips">
-                Miasto wylotu: ${trip_promoted.departureCity.name} <br/>
-                Miasto docelowe: ${trip_promoted.arrivalCity.name} <br/>
-                Cena za osobę dorosłą: ${trip_promoted.adultPrice} <br/>
-                Ilość dni: ${trip_promoted.daysQuantity} <br/>
-                Wycieczka promowana? ${trip_promoted.isPromoted} <br/>
-                Ilość miejsc dla dorosłych: ${trip_promoted.adultsQuantity}
-                <a href="/trip/details/${trip_promoted.id}">Pokaż szczegóły</a>
-                <hr>
-            </div>
-        </c:forEach>
-    </div>
-
-    <h3>Lista wszystkich wycieczek:</h3>
-    <div class="trips_section">
-        <c:forEach items="${allTrips}" var="trip">
-            <div class="all_trips">
-                Miasto wylotu: ${trip.departureCity.name} <br/>
-                Miasto docelowe: ${trip.arrivalCity.name} <br/>
-                Cena za osobę dorosłą: ${trip.adultPrice} <br/>
-                Ilość dni: ${trip.daysQuantity} <br/>
-                Wycieczka promowana? ${trip.isPromoted} <br/>
-                Ilość miejsc dla dorosłych: ${trip.adultsQuantity} <br/>
-                <a href="/trip/details/${trip.id}">Pokaż szczegóły</a>
-                <hr>
-            </div>
-        </c:forEach>
-    </div>
-
-    <h3>Lista wycieczek na dany kontynent:</h3>
         <div class="trips_section">
-        <c:forEach items="${allContinents}" var="continent">
-            <div class="trip-continent">
-                ${continent.name}
-                <c:forEach items="${continent.countries}" var="country">
-                    <c:forEach items="${country.cityList}" var="city">
-                        <div class="all_trips">
-                            <c:forEach items="${city.arrivalTripList}" var="trip">
-                                <div class="trip-city">
-                                -> ${trip.arrivalCity.name}
-                                </div>
-                            </c:forEach>
-                        </div>
-                    </c:forEach>
+            <div class="title">Wycieczki promowane</div>
+            <div class="trips">
+                <c:forEach items="${promotedTrips}" var="trip">
+                    <div class="trip">
+                        <h1>${trip.arrivalCity.name}</h1>
+                        ${trip.startDate}
+                        <span class="trip_description">Cena za osobę:</span> <p class="price">${trip.adultPrice}</p>
+                        <a href="/trip/details/${trip.id}" class="details_button">Pokaż więcej</a>
+                    </div>
                 </c:forEach>
             </div>
-        </c:forEach>
-    </div>
+        </div>
 
+        <div class="trips_section">
+            <div class="title">Last minute</div>
+            <div class="trips">
+                <c:forEach items="${lastMinute}" var="trip">
+                    <div class="trip">
+                        <h1>${trip.arrivalCity.name}</h1>
+                        <span class="trip_description">Cena za osobę:</span> <p class="price">${trip.adultPrice}</p>
+                        <span class="trip_description">Start wycieczki: ${trip.startDate}</span>
+                        <a href="/trip/details/${trip.id}" class="details_button">Pokaż więcej</a>
+                    </div>
+                </c:forEach>
+            </div>
+        </div>
+
+        <div class="trips_section">
+            <div class="title">First minute</div>
+            <div class="trips">
+                <c:forEach items="${firstMinute}" var="trip">
+                    <div class="trip">
+                        <h1>${trip.arrivalCity.name}</h1>
+                        <span class="trip_description">Cena za osobę:</span> <p class="price">${trip.adultPrice}</p>
+                        <span class="trip_description">Start wycieczki: ${trip.startDate}</span>
+                        <a href="/trip/details/${trip.id}" class="details_button">Pokaż więcej</a>
+                    </div>
+                </c:forEach>
+            </div>
+        </div>
+
+    </div>
 </div>
+
+
+
 
 
 </body>

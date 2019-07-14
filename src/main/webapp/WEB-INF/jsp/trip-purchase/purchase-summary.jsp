@@ -7,12 +7,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Super hiper biuro podróży!!</title>
+<<<<<<< HEAD
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/main.css"/>
 
+=======
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/header.css"/>
+>>>>>>> view
 </head>
 <body>
 
 <div class="container">
+<<<<<<< HEAD
+=======
+
+>>>>>>> view
     <header>
         <%@include file="../fragments/header.jspf" %>
     </header>
@@ -30,8 +39,12 @@
 
         Miasto wylotu: ${newTripPurchase.trip.departureCity.name} <br/>
 
+<<<<<<< HEAD
         Kwota do zapłaty:
         ${amountOfMoney}
+=======
+        Cena: ${amountOfMoney}
+>>>>>>> view
 
 
     </div>

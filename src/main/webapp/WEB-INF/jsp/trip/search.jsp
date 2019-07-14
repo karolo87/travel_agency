@@ -7,7 +7,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Dodaj wycieczkę</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/main.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/header.css"/>
 
 </head>
 <body>

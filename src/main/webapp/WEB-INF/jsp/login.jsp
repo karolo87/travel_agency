@@ -8,7 +8,8 @@
 <head>
     <meta charset="utf-8">
     <title>Zaloguj</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/main.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/header.css"/>
 
 </head>
 <body>

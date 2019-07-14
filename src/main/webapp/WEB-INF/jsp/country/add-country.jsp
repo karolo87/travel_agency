@@ -7,15 +7,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Dodaj kraj</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/header.css"/>
 </head>
 <body>
-<%@include file="../fragments/header.jspf" %>
+<div class="container">
 
-<form:form action="/admin/add-country/${continentId}" modelAttribute="newCountry" method="post">
+    <%@include file="../fragments/header.jspf" %>
 
-    Nazwa kraju: <form:input path="name"/>
-    <input type="submit" value="Dodaj"/>
-</form:form>
+    <form:form action="/admin/add-country/${continentId}" modelAttribute="newCountry" method="post">
+
+        Nazwa kraju: <form:input path="name"/>
+        <input type="submit" value="Dodaj"/>
+    </form:form>
+
+</div>
+
 
 </body>
 </html>

@@ -7,15 +7,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista miast</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/header.css"/>
 </head>
 <body>
-<%@include file="../fragments/header.jspf" %>
+<div class="container">
 
-<c:forEach items="${allCities}" var="city">
-    ${city.name}
-    ${city.country.name}
-    ${city.country.continent.name}
-</c:forEach>
+    <%@include file="../fragments/header.jspf" %>
+
+    <div class="trips_section">
+        <div class="trips">
+            <c:forEach items="${allCities}" var="city">
+                <div class="trip">
+                    <h2>${city.name}</h2> <br/>
+                        ${city.country.name}<br/>
+                        ${city.country.continent.name}
+                </div>
+
+            </c:forEach>
+        </div>
+
+    </div>
+
+
+</div>
+
 
 
 </body>

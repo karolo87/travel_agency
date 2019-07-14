@@ -1,12 +1,18 @@
 package com.travelagency.demo.controller;
 
+import com.travelagency.demo.domain.model.Trip;
 import com.travelagency.demo.service.ContinentService;
 import com.travelagency.demo.service.TripService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.List;
 
 @Controller
 //@RequiredArgsConstructor
@@ -27,7 +33,9 @@ public class IndexController {
         model.addAttribute("allTrips", tripService.getAllTrips());
         model.addAttribute("promotedTrips", tripService.getPromotedTrips());
         model.addAttribute("allContinents", continentService.getAllContinentsSortedByName());
+        model.addAttribute("firstMinute", tripService.getTripsOrderedByStartDateDesc());
+        model.addAttribute("lastMinute", tripService.getTripsOrderedByStartDateAsc());
+
         return "index";
     }
-
 }
