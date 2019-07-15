@@ -19,42 +19,42 @@
     <div class="main-page">
         <h1>Super Biuro Podróży!</h1>
 
+        <div class="title">Wycieczki promowane</div>
         <div class="trips_section">
-            <div class="title">Wycieczki promowane</div>
             <div class="trips">
                 <c:forEach items="${promotedTrips}" var="trip">
                     <div class="trip">
                         <h1>${trip.arrivalCity.name}</h1>
-                        ${trip.startDate}
                         <span class="trip_description">Cena za osobę:</span> <p class="price">${trip.adultPrice}</p>
+                        <span class="trip_description">Start wycieczki:</span> ${trip.startDate}
                         <a href="/trip/details/${trip.id}" class="details_button">Pokaż więcej</a>
                     </div>
                 </c:forEach>
             </div>
         </div>
 
+        <div class="title">Last minute</div>
         <div class="trips_section">
-            <div class="title">Last minute</div>
             <div class="trips">
                 <c:forEach items="${lastMinute}" var="trip">
                     <div class="trip">
                         <h1>${trip.arrivalCity.name}</h1>
                         <span class="trip_description">Cena za osobę:</span> <p class="price">${trip.adultPrice}</p>
-                        <span class="trip_description">Start wycieczki: ${trip.startDate}</span>
+                        <span class="trip_description">Start wycieczki:</span> ${trip.startDate}
                         <a href="/trip/details/${trip.id}" class="details_button">Pokaż więcej</a>
                     </div>
                 </c:forEach>
             </div>
         </div>
 
+        <div class="title">First minute</div>
         <div class="trips_section">
-            <div class="title">First minute</div>
             <div class="trips">
                 <c:forEach items="${firstMinute}" var="trip">
                     <div class="trip">
                         <h1>${trip.arrivalCity.name}</h1>
                         <span class="trip_description">Cena za osobę:</span> <p class="price">${trip.adultPrice}</p>
-                        <span class="trip_description">Start wycieczki: ${trip.startDate}</span>
+                        <span class="trip_description">Start wycieczki:</span> ${trip.startDate}
                         <a href="/trip/details/${trip.id}" class="details_button">Pokaż więcej</a>
                     </div>
                 </c:forEach>

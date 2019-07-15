@@ -20,22 +20,18 @@
         <div class="trips">
             <c:forEach items="${foundTrips}" var="trip">
                 <div class="trip">
-                        ${trip.departureCity.name} <br/>
+                        Wylot z :${trip.departureCity.name} |
                         ${trip.departureAirport.name} <br/>
-                        ${trip.arrivalCity.name} <br/>
+                        Przylot do: ${trip.arrivalCity.name} |
                         ${trip.arrivalAirport.name} <br/>
+                        Cena za osobę dorosłą: ${trip.adultPrice} <br/>
+                        Cena za dziecko: ${trip.childPrice} <br/>
                     <a href="/trip/details/${trip.id}" class="details_button">Pokaż szczegóły</a>
                 </div>
             </c:forEach>
         </div>
-
-
-
     </div>
-
-
 </div>
-
 
 </body>
 </html>

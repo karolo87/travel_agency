@@ -127,18 +127,9 @@
                     <th><input type="submit" value="Dodaj"/></th>
                 </tr>
             </table>
-
-
-
         </form:form>
-
-
     </div>
-
 </div>
-
-
-
 
 </body>
 </html>

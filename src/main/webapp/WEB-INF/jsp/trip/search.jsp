@@ -15,10 +15,9 @@
 <%@include file="../fragments/header.jspf" %>
 
 <div class="container">
-    <h2>Dodaj wycieczkę</h2>
+    <h2>Wyszukaj wycieczkę</h2>
 
     <form:form action="/search" modelAttribute="searchedTrip" method="post">
-
         <form:input path="value"/>
         <form:select path="param">
             <form:option label="Miasto wylotu" value="departureCity"/>
@@ -37,11 +36,8 @@
             <form:option label="Wycieczka promowana" value="childrenQuantity"/>
         </form:select>
         <input type="submit" value="Szukaj"/>
-
-
     </form:form>
 </div>
-
 
 </body>
 </html>

@@ -33,8 +33,8 @@ public class IndexController {
         model.addAttribute("allTrips", tripService.getAllTrips());
         model.addAttribute("promotedTrips", tripService.getPromotedTrips());
         model.addAttribute("allContinents", continentService.getAllContinentsSortedByName());
-        model.addAttribute("firstMinute", tripService.getTripsOrderedByStartDateDesc());
-        model.addAttribute("lastMinute", tripService.getTripsOrderedByStartDateAsc());
+        model.addAttribute("firstMinute", tripService.getTripsOrderedByStartDateDesc().subList(0, 3));
+        model.addAttribute("lastMinute", tripService.getTripsOrderedByStartDateAsc().subList(0, 3));
 
         return "index";
     }

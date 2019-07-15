@@ -1,6 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,8 +16,11 @@
 <c:choose>
 
     <c:when test="${empty countries_of_continent}">
-        <a href="/admin/add-country/${continentId}">Dodaj kraj</a>
+        <sec:authorize access="hasRole('ADMIN')">
+            <a href="/admin/add-country/${continentId}">Dodaj kraj</a>
+        </sec:authorize>
     </c:when>
+
 
     <c:otherwise>
 
@@ -25,13 +28,14 @@
             ${country.id} |
             ${country.name}
             <a href="/city/list/${country.id}">Lista miast</a>
-            <a href="/admin/add-city/${country.id}">Dodaj miasto</a>
+            <sec:authorize access="hasRole('ADMIN')">
+                <a href="/admin/add-city/${country.id}">Dodaj miasto</a>
+            </sec:authorize>
             <br/>
         </c:forEach>
 
     </c:otherwise>
 </c:choose>
-
 
 
 </body>
