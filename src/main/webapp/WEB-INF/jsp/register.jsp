@@ -9,7 +9,6 @@
     <title>Super hiper biuro podróży!!</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/header.css"/>
-
 </head>
 <body>
 
@@ -17,7 +16,6 @@
     <header>
         <%@include file="fragments/header.jspf" %>
     </header>
-
 
     <form:form method="post" action="/register" modelAttribute="userForm">
         Nazwa użytkownika:

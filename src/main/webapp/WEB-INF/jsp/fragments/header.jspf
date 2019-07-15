@@ -18,7 +18,7 @@
     <a href="/"><div class="nav-link">Strona główna</div></a> |
     <a href="/continent/list"><div class="nav-link">Kontynenty</div></a> |
     <a href="/country/all-countries"><div class="nav-link">Państwa</div></a> |
-    <a href="/city/all-cities"><div class="nav-link">Miasta</div></a> ||
+    <a href="/city/all-cities"><div class="nav-link">Miasta</div></a> |
     <a href="/search"><div class="nav-link">Wyszukaj wycieczkę</div></a> |
     <a href="/trip/list"><div class="nav-link">Lista wycieczek</div></a> |
 

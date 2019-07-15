@@ -24,13 +24,6 @@
         <input type="submit" value="Zaloguj"/>
     </form>
 
-<%--    <form:form action="/login" method="post">--%>
-<%--        Login:<form:input path="username" />--%>
-<%--        Password:<form:password path="password"/>--%>
-<%--        <input type="submit" value="Zaloguj"/>--%>
-<%--    </form:form>--%>
-
-
 </div>
 
 </body>

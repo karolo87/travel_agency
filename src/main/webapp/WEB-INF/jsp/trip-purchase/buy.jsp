@@ -21,10 +21,9 @@
     <h2>Szczegóły wycieczki</h2>
 
     <div>
-        ${trip.arrivalCity.name}
+        <h3>${trip.arrivalCity.name}</h3>
 
             <form:form modelAttribute="newTripPurchase" action="/buy-a-trip/${tripId}" method="post">
-`
                 <table>
                     <tr>
                         <th>Podaj imię:</th>
@@ -48,13 +47,8 @@
                     </tr>
                 </table>
             </form:form>
-
     </div>
-
 </div>
-
-
-
 
 </body>
 </html>

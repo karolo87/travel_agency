@@ -8,10 +8,32 @@
     background-color: #007bff;
 }
 
+.title {
+    background-color: #007bff;
+    width: 100%;
+}
+
 .trips {
-    display: flex;
+        display: flex;
     flex-direction: row;
     /*width: 800px;*/
+}
+
+/*.trips:nth-child(2) {*/
+/*    content: "<br/> ";*/
+/*    white-space: pre;*/
+/*    float: left;*/
+/*}*/
+
+.trip {
+    float: left;
+    width: 300px;
+    padding: 10px;
+    border-style: solid;
+    border-color: #007bff;
+}
+.trip:nth-child(2n) {
+    background-color: rgba(21,221,209,0.27);
 }
 
 .trips_section {
@@ -22,12 +44,6 @@
     font-size: 25px;
 }
 
-.trip {
-    width: 300px;
-    padding: 10px;
-    border-style: solid;
-    border-color: #007bff;
-}
 
 .trip_description {
     font-style: italic;
@@ -50,9 +66,9 @@
 }
 
 .details_button {
-    background-color: #1c87c9;
-    border: none;
+    background-color: rgba(37,221,206,0.71);
     color: white;
+    width: 100px;
     /*padding: 20px 34px;*/
     text-align: center;
     text-decoration: none;
