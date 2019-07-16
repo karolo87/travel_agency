@@ -8,6 +8,15 @@
     background-color: #007bff;
 }
 
+.error {
+    color: red;
+    background-color: rgba(221,120,71,0.71);
+    border-style: solid;
+    border-color: red;
+    padding: 5px;
+    alignment: left;
+}
+
 .title {
     background-color: #007bff;
     width: 100%;

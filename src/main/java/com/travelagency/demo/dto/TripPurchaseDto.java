@@ -1,7 +1,9 @@
 package com.travelagency.demo.dto;
 
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
+@Component
 @Data
 public class TripPurchaseDto {
 
@@ -10,4 +12,6 @@ public class TripPurchaseDto {
     private String clientLastName;
     private Integer adultsQuantity;
     private Integer childrenQuantity;
+
+
 }

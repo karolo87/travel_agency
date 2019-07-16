@@ -5,11 +5,14 @@ import com.travelagency.demo.domain.model.TripPurchase;
 import com.travelagency.demo.dto.TripPurchaseDto;
 import com.travelagency.demo.service.TripPurchaseService;
 import com.travelagency.demo.service.TripService;
+import com.travelagency.demo.validator.TripPurchaseValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
 
@@ -19,12 +22,15 @@ public class TripPurchaseController {
 
     private TripPurchaseService tripPurchaseService;
     private TripService tripService;
+    private TripPurchaseValidator tripPurchaseValidator;
 
     @Autowired
     public TripPurchaseController(TripPurchaseService tripPurchaseService,
-                                  TripService tripService) {
+                                  TripService tripService,
+                                  TripPurchaseValidator tripPurchaseValidator) {
         this.tripPurchaseService = tripPurchaseService;
         this.tripService = tripService;
+        this.tripPurchaseValidator = tripPurchaseValidator;
     }
 
 
@@ -39,7 +45,12 @@ public class TripPurchaseController {
     @PostMapping("/buy-a-trip/{tripId}")
     public String buyATripPost(@PathVariable("tripId") Long tripId,
                                @ModelAttribute("newTripPurchase") TripPurchaseDto tripPurchaseDto,
-                               Model model){
+                               Model model, BindingResult bindingResult) {
+        tripPurchaseValidator.validate(tripPurchaseDto, bindingResult);
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("error", bindingResult);
+            return "trip-purchase/buy";
+        }
         TripPurchase purchase = tripPurchaseService.createPurchaseFromDto(tripId, tripPurchaseDto);
         model.addAttribute("purchaseId", purchase.getId());
         return "redirect:/purchase/purchase-summary/" + purchase.getId();
