@@ -34,15 +34,15 @@ public class TripPurchaseService {
         clientsData = clientsDataService.addNewClient(clientsData);
 
         tripPurchase.setClient(clientsData);
-        tripPurchase.setAdultsQuantity(tripPurchaseDto.getAdultsQuantity());
-        tripPurchase.setChildrenQuantity(tripPurchaseDto.getChildrenQuantity());
+        tripPurchase.setAdultsQuantity(Integer.valueOf(tripPurchaseDto.getAdultsQuantity()));
+        tripPurchase.setChildrenQuantity(Integer.valueOf(tripPurchaseDto.getChildrenQuantity()));
         foundTrip.ifPresent(tripPurchase::setTrip);
 
         if (foundTrip.isPresent()) {
             foundTrip.get()
-                    .setAdultsQuantity(foundTrip.get().getAdultsQuantity() - tripPurchaseDto.getAdultsQuantity());
+                    .setAdultsQuantity(foundTrip.get().getAdultsQuantity() - Integer.valueOf(tripPurchaseDto.getAdultsQuantity()));
             foundTrip.get()
-                    .setChildrenQuantity(foundTrip.get().getChildrenQuantity() - tripPurchaseDto.getChildrenQuantity());
+                    .setChildrenQuantity(foundTrip.get().getChildrenQuantity() - Integer.valueOf(tripPurchaseDto.getChildrenQuantity()));
         }
 
         return tripPurchaseRepository.save(tripPurchase);

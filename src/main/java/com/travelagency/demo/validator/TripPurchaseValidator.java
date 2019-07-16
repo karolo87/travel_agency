@@ -21,11 +21,17 @@ public class TripPurchaseValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "clientFirstName", "NotEmpty", "Pole wymagane!");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "clientLastName", "NotEmpty", "Pole wymagane!");
 
-        if (trip.getAdultsQuantity() == null || trip.getAdultsQuantity() < 0) {
-            errors.rejectValue("adultsQuantity", "value.positive", "Pole nie może być wartością ujemną.");
-        }
-        if (trip.getChildrenQuantity() == null || trip.getChildrenQuantity() < 0) {
+//        if (trip.getAdultsQuantity() == null || trip.getAdultsQuantity().equals("")) {
+//            errors.rejectValue("adultsQuantity", "value.positive", "Pole nie może być wartością ujemną.");
+//        }
+        if (trip.getChildrenQuantity() == null || Integer.valueOf(trip.getChildrenQuantity()) < 0) {
             errors.rejectValue("childrenQuantity", "value.positive", "Pole nie może być wartością ujemną.");
+        }
+        if (!trip.getAdultsQuantity().matches("^\\d+$")) {
+            errors.rejectValue("adultsQuantity", "not.int");
+        }
+        if (!trip.getChildrenQuantity().matches("^\\d+$")) {
+            errors.rejectValue("childrenQuantity", "not.int");
         }
     }
 }
