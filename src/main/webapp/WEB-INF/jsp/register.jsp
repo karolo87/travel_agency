@@ -31,6 +31,7 @@
         <input type="submit" value="Zarejestruj"/>
     </form:form>
 
+    <img src="${pageContext.request.contextPath}/img/background.jpg">
 </div>
 
 
