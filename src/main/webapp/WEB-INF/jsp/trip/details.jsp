@@ -31,6 +31,8 @@
         <span class="detail">${trip.hotel.name}  </span><br/>
         <span class="label">Wyżywienie: </span>
         <span class="detail">${trip.type}  </span><br/>
+        <span class="label">Wolne miejsca dla dorosłych: </span>
+        <span class="detail">${trip.adultsQuantity}  </span><br/>
 
 
         ${newPurchase.id} <br/>

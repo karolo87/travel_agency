@@ -10,8 +10,10 @@ public class TripPurchaseDto {
     private String purchaseId;
     private String clientFirstName;
     private String clientLastName;
-    private String adultsQuantity = "2";
-    private String childrenQuantity = "0";
+    private String adultsQuantity;
+    private String childrenQuantity;
+    private String adultsAvailable;
+    private String childrenAvailable;
 
 
 }

@@ -37,8 +37,15 @@ public class TripPurchaseController {
     @GetMapping("/buy-a-trip/{tripId}")
     public String buyATrip(@PathVariable("tripId") Long tripId,
                            Model model) {
-        model.addAttribute("trip", tripService.getTripById(tripId).get());
-        model.addAttribute("newTripPurchase", new TripPurchaseDto());
+        Trip trip = tripService.getTripById(tripId).get();
+        TripPurchaseDto dto = new TripPurchaseDto();
+
+        model.addAttribute("trip", trip);
+        model.addAttribute("newTripPurchase", dto);
+        dto.setAdultsAvailable(String.valueOf(trip.getAdultsQuantity()));
+        dto.setChildrenAvailable(String.valueOf(trip.getChildrenQuantity()));
+        dto.setAdultsQuantity("2");
+        dto.setChildrenQuantity("0");
         return "trip-purchase/buy";
     }
 
@@ -46,11 +53,13 @@ public class TripPurchaseController {
     public String buyATripPost(@PathVariable("tripId") Long tripId,
                                @ModelAttribute("newTripPurchase") TripPurchaseDto tripPurchaseDto,
                                Model model, BindingResult bindingResult) {
+        Trip trip = tripService.getTripById(tripId).get();
         tripPurchaseValidator.validate(tripPurchaseDto, bindingResult);
         if (bindingResult.hasErrors()) {
             model.addAttribute("error", bindingResult);
             return "trip-purchase/buy";
         }
+
         TripPurchase purchase = tripPurchaseService.createPurchaseFromDto(tripId, tripPurchaseDto);
         model.addAttribute("purchaseId", purchase.getId());
         return "redirect:/purchase/purchase-summary/" + purchase.getId();
