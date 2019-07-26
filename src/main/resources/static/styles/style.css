@@ -91,3 +91,7 @@
 .details_button:hover {
     color: #F97300;
 }
+
+.data-sheet {
+    border: 1px;
+}

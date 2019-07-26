@@ -2,11 +2,15 @@ package com.travelagency.demo.controller;
 
 import com.travelagency.demo.domain.model.Trip;
 import com.travelagency.demo.domain.model.TripPurchase;
+import com.travelagency.demo.dto.PageForm;
 import com.travelagency.demo.dto.TripPurchaseDto;
 import com.travelagency.demo.service.TripPurchaseService;
 import com.travelagency.demo.service.TripService;
 import com.travelagency.demo.validator.TripPurchaseValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -79,4 +83,21 @@ public class TripPurchaseController {
         return "trip-purchase/purchase-summary";
     }
 
+    @GetMapping("/admin/purchase-list")
+    public String getAllPurchases(Model model) {
+        model.addAttribute("pageForm", new PageForm());
+        model.addAttribute("purchaseList", tripPurchaseService.getAllTripPurchases());
+        return "trip-purchase/list";
+    }
+
+    @PostMapping("/admin/purchase-list")
+    public String getAllPurchasesPost(@ModelAttribute("pageForm") PageForm pageForm, Model model) {
+        Pageable pageable = PageRequest.of(pageForm.getPage(),
+                pageForm.getSize(),
+                pageForm.getSortOrder(),
+                pageForm.getSortField());
+        Page<TripPurchase> allTripPurchases = tripPurchaseService.getAllTripPurchases(pageable);
+        model.addAttribute("purchaseList", allTripPurchases);
+        return "/admin/purchase-list";
+    }
 }

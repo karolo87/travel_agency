@@ -24,6 +24,7 @@
 
     <sec:authorize access="hasRole('ADMIN')">
         <a href="/admin/add-trip"><div class="nav-link">Dodaj wycieczkę</div></a> |
+        <a href="/admin/purchase-list"><div class="nav-link">Lista zakupionych wycieczek</div></a>
     </sec:authorize>
 
     <sec:authorize access="isAnonymous()">
