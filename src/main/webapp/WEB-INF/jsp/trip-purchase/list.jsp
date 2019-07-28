@@ -43,12 +43,13 @@
                 <tr>
                     <th>Miasto wylotu</th>
                     <th>Miasto przylotu</th>
+                    <th>Kwota do zapłaty</th>
                 </tr>
                 <c:forEach items="${purchaseList}" var="purchase">
                     <tr>
                         <th>${purchase.trip.departureCity.name}</th>
                         <th>${purchase.trip.arrivalCity.name}</th>
-                        <th>${purchase.purchaseValue}</th>
+                        <th>${purchase.financeDetails.totalCost}</th>
                     </tr>
                 </c:forEach>
             </table>
