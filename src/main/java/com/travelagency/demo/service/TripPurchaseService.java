@@ -4,11 +4,9 @@ import com.travelagency.demo.domain.model.ClientsData;
 import com.travelagency.demo.domain.model.Trip;
 import com.travelagency.demo.domain.model.TripPurchase;
 import com.travelagency.demo.domain.repository.TripPurchaseRepository;
-import com.travelagency.demo.dto.PageForm;
 import com.travelagency.demo.dto.TripPurchaseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -22,12 +20,6 @@ public class TripPurchaseService {
     private final TripPurchaseRepository tripPurchaseRepository;
     private final TripService tripService;
     private final ClientsDataService clientsDataService;
-
-    public void addNewTripPurchase(Long tripId, TripPurchase tripPurchase) {
-        Optional<Trip> foundTrip = tripService.getTripById(tripId);
-        foundTrip.ifPresent(tripPurchase::setTrip);
-        tripPurchaseRepository.save(tripPurchase);
-    }
 
     public List<TripPurchase> getAllTripPurchases() {
         return tripPurchaseRepository.findAll();
@@ -49,6 +41,7 @@ public class TripPurchaseService {
         tripPurchase.setClient(clientsData);
         tripPurchase.setAdultsQuantity(Integer.valueOf(tripPurchaseDto.getAdultsQuantity()));
         tripPurchase.setChildrenQuantity(Integer.valueOf(tripPurchaseDto.getChildrenQuantity()));
+
         foundTrip.ifPresent(tripPurchase::setTrip);
 
         if (foundTrip.isPresent()) {

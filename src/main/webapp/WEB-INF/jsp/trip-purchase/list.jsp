@@ -48,6 +48,7 @@
                     <tr>
                         <th>${purchase.trip.departureCity.name}</th>
                         <th>${purchase.trip.arrivalCity.name}</th>
+                        <th>${purchase.purchaseValue}</th>
                     </tr>
                 </c:forEach>
             </table>

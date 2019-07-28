@@ -4,39 +4,31 @@ import com.travelagency.demo.domain.model.Trip;
 import com.travelagency.demo.domain.model.TripPurchase;
 import com.travelagency.demo.dto.PageForm;
 import com.travelagency.demo.dto.TripPurchaseDto;
+import com.travelagency.demo.service.PurchaseFinanceDetailsService;
 import com.travelagency.demo.service.TripPurchaseService;
 import com.travelagency.demo.service.TripService;
 import com.travelagency.demo.validator.TripPurchaseValidator;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-
-import java.util.Optional;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 
 @Controller
+@RequiredArgsConstructor
 public class TripPurchaseController {
 
-    private TripPurchaseService tripPurchaseService;
-    private TripService tripService;
-    private TripPurchaseValidator tripPurchaseValidator;
-
-    @Autowired
-    public TripPurchaseController(TripPurchaseService tripPurchaseService,
-                                  TripService tripService,
-                                  TripPurchaseValidator tripPurchaseValidator) {
-        this.tripPurchaseService = tripPurchaseService;
-        this.tripService = tripService;
-        this.tripPurchaseValidator = tripPurchaseValidator;
-    }
-
+    private final TripPurchaseService tripPurchaseService;
+    private final TripService tripService;
+    private final TripPurchaseValidator tripPurchaseValidator;
+    private final PurchaseFinanceDetailsService financeDetailsService;
 
     @GetMapping("/buy-a-trip/{tripId}")
     public String buyATrip(@PathVariable("tripId") Long tripId,
@@ -74,6 +66,7 @@ public class TripPurchaseController {
                                    Model model) {
         model.addAttribute("newTripPurchase", tripPurchaseService.getTripPurchaseById(purchaseId).get());
         model.addAttribute("amountOfMoney", tripPurchaseService.calculateTripPurchaseFinances(purchaseId));
+        model.addAttribute("financeDetails", financeDetailsService.save(tripPurchaseService.getTripPurchaseById(purchaseId).get()));
         return "trip-purchase/purchase-summary";
     }
 

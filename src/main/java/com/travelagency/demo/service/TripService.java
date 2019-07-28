@@ -20,24 +20,11 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class TripService {
 
-    private TripRepository tripRepository;
-    private CountryService countryService;
-    private CityService cityService;
-    private AirportService airportService;
-    private HotelService hotelService;
+    private final TripRepository tripRepository;
+    private final CityService cityService;
+    private final AirportService airportService;
+    private final HotelService hotelService;
 
-    @Autowired
-    public TripService(TripRepository tripRepository,
-                       CountryService countryService,
-                       CityService cityService,
-                       AirportService airportService,
-                       HotelService hotelService) {
-        this.tripRepository = tripRepository;
-        this.countryService = countryService;
-        this.cityService = cityService;
-        this.airportService = airportService;
-        this.hotelService = hotelService;
-    }
 
     public Trip addNewTrip(Trip trip) {
         return tripRepository.save(trip);
@@ -86,7 +73,6 @@ public class TripService {
         } else {
             trip = getTripById(tripDto.getId()).get();
         }
-//        Trip trip = new Trip();
         trip.setDepartureCity(cityService.findCityByName(tripDto.getDepartureCity()));
         trip.setDepartureAirport(airportService.findByName(tripDto.getDepartureAirport()));
         trip.setArrivalCity(cityService.findCityByName(tripDto.getArrivalCity()));
@@ -101,7 +87,6 @@ public class TripService {
         trip.setAdultsQuantity(tripDto.getAdultsQuantity());
         trip.setChildrenQuantity(tripDto.getChildrenQuantity());
         trip.setIsPromoted(tripDto.getIsPromoted());
-
 
         return tripRepository.save(trip);
     }

@@ -26,7 +26,10 @@
         Ilość osób dorosłych: ${newTripPurchase.adultsQuantity} <br/>
         Ilość dzieci: ${newTripPurchase.childrenQuantity} <br/>
         Miasto wylotu: ${newTripPurchase.trip.departureCity.name} <br/>
-        Kwota do zapłaty: ${amountOfMoney}
+
+        Kwota za dorosłych: ${financeDetails.adultsCost}<br/>
+        Kwota za dzieci: ${financeDetails.childrenCost}<br/>
+        <h4>Kwota do zapłaty: ${amountOfMoney} </h4><br/>
 
     </div>
 </div>

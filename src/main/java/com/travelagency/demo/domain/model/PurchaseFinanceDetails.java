@@ -6,22 +6,19 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Data
 @Entity
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TripPurchase {
+public class PurchaseFinanceDetails {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
-    @ManyToOne
-    private Trip trip;
+    private Double adultsCost;
+    private Double childrenCost;
+    private Double totalCost;
     @OneToOne
-    private ClientsData client;
-    private Integer adultsQuantity;
-    private Integer childrenQuantity;
-    @OneToOne
-    private PurchaseFinanceDetails financeDetails;
+    private TripPurchase tripPurchase;
 
 }
