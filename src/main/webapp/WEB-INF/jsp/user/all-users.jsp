@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Zaloguj</title>
+    <title>Lista użytkowników</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/style.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/header.css"/>
 
@@ -15,14 +15,19 @@
 <body>
 <div class="container">
     <header>
-        <%@include file="fragments/header.jspf"%>
+        <div>
+            <%@include file="../fragments/header.jspf"%>
+        </div>
     </header>
 
-        <form name="loginForm" action="/login" method="post">
-            Login:<input name="username"/>
-            Hasło:<input type="password" name="password"/>
-            <input type="submit" value="Zaloguj"/>
-        </form>
+    <div>
+        <c:forEach items="${allUsers}" var="user">
+            ${user.id}
+            ${user.username}
+            <br/>
+        </c:forEach>
+    </div>
+
 
 </div>
 

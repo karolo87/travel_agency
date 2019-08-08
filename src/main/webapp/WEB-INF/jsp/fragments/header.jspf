@@ -14,29 +14,39 @@
 
 </head>
 <body>
+
+<div id="logo">
+    <h1>Super Biuro Podróży!</h1>
+</div>
+
 <nav class="navbar">
-    <a href="/"><div class="nav-link">Strona główna</div></a> |
-    <a href="/continent/list"><div class="nav-link">Kontynenty</div></a> |
-    <a href="/country/all-countries"><div class="nav-link">Państwa</div></a> |
-    <a href="/city/all-cities"><div class="nav-link">Miasta</div></a> |
-    <a href="/search"><div class="nav-link">Wyszukaj wycieczkę</div></a> |
-    <a href="/trip/list"><div class="nav-link">Lista wycieczek</div></a> |
+    <a href="/"><div class="nav-link">Strona główna</div></a>
+    <a href="/continent/list"><div class="nav-link">Kontynenty</div></a>
+    <a href="/country/all-countries"><div class="nav-link">Państwa</div></a>
+    <a href="/city/all-cities"><div class="nav-link">Miasta</div></a>
+    <a href="/search"><div class="nav-link">Wyszukaj wycieczkę</div></a>
+    <a href="/trip/list"><div class="nav-link">Lista wycieczek</div></a>
 
     <sec:authorize access="hasRole('ADMIN')">
-        <a href="/admin/add-trip"><div class="nav-link">Dodaj wycieczkę</div></a> |
+        <a href="/admin/add-trip"><div class="nav-link">Dodaj wycieczkę</div></a>
         <a href="/admin/purchase-list"><div class="nav-link">Lista zakupionych wycieczek</div></a>
-    </sec:authorize>
-
-    <sec:authorize access="isAnonymous()">
-    <a href="/register"><div class="nav-link">Zarejestruj</div></a> |
-        <a href="/login"><div class="nav-link">Zaloguj</div></a>
-    </sec:authorize>
-
-    <sec:authorize access="!isAnonymous()">
-        <a href="/perform_logout"><div class="nav-link">Wyloguj</div></a>
+        <a href="/admin/all-users"><div class="nav-link">Lista użytkowników</div></a>
     </sec:authorize>
 
 </nav>
+<div class="user-panel-container">
+    <div class="user-panel-item">
+        <sec:authorize access="isAnonymous()">
+            <a class="details_button" href="/register">Zarejestruj</a>
+            <a class="details_button" href="/login">Zaloguj</a>
+        </sec:authorize>
+
+        <sec:authorize access="!isAnonymous()">
+        <div class="details_button"><a href="/perform_logout">Wyloguj</a></div>
+            Siemanko <sec:authentication property="principal.username"/>!<br/>
+        </sec:authorize>
+    </div>
+</div>
 
 
 </body>

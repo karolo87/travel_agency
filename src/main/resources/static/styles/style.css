@@ -1,12 +1,23 @@
 * {
     font-family: Lato, sans-serif;
     font-size: 18px;
-    background-color: #f4f4f4;
     /*background-image: url("static/img/background.jpg");*/
 }
 
+body {
+    background-color: #8ca69e;
+}
+
+.wrapper {
+    margin-left: 30px;
+    margin-right: 30px;
+    /*width: 100%;*/
+    height: 100%;
+}
+
 .container {
-    background-color: #007bff;
+    /*background-color: #9dd7ff;*/
+    height: 100%;
 }
 
 .error {
@@ -19,41 +30,44 @@
     alignment: left;
 }
 
+.trips_section {
+    background-color: #6f97c0;
+}
+
 .title {
     background-color: #007bff;
     width: 100%;
     display: inline-block;
 }
 
+.title span {
+    font-size: 25px;
+    margin: auto 10px;
+}
+
 .trips {
-    /*    display: flex;*/
-    /*flex-direction: row;*/
+    display: inline-block;
 }
 
 .trip {
     width: 300px;
     height: 300px;
+    margin-left: auto;
+    margin-right: auto;
     padding: 10px;
     border-style: solid;
     border-color: #007bff;
     float: left;
+    background-color: #ffd78e;
 }
+
 .trip:nth-child(2n) {
-    background-color: rgba(21,221,209,0.27);
+    background-color: #FFF9A4;
 }
 
 .trip:nth-child(3n+1) {
     clear: left;
 }
-
-.trips_section {
-    background-color: beige;
-}
-
-.trips_section title {
-    font-size: 25px;
-}
-
 
 .trip_description {
     font-style: italic;
@@ -76,15 +90,13 @@
 }
 
 .details_button {
-    background-color: rgba(37,221,206,0.71);
+    background-color: #2E69FF;
     color: white;
     width: 100px;
-    /*padding: 20px 34px;*/
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    /*margin: 4px 2px;*/
     cursor: pointer;
 }
 

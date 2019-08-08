@@ -43,4 +43,10 @@ public class UserController {
         return "login";
     }
 
+    @GetMapping("/admin/all-users")
+    public String getAllUsers(Model model) {
+        model.addAttribute("allUsers", userService.getAllUsers());
+        return "user/all-users";
+    }
+
 }
